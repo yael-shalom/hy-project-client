@@ -1,0 +1,134 @@
+body {
+    /* background-image: url("./homePage.png"); */
+    background-color: #1bb1b2;
+    background-size: cover;
+    background-repeat: no-repeat;
+    font-family: Rubik, Lato, sans-serif;
+    height: 100vh;
+    width: 100vw;
+    margin: 0;
+    direction: rtl;
+}
+
+button {
+    position: relative;
+    color: aliceblue;
+    background-color: #ff5c2d;
+    border: none;
+    border-radius: 5px;
+    height: 2.7em;
+    width: 115px;
+    font-size: 22px;
+    text-align: center;
+    left: 10px;
+    top: 12%;
+}
+
+button:hover {
+    background-color: #ff3900;
+}
+
+header,
+main,
+footer {
+    width: 100%;
+}
+
+header {
+    height: 20%;
+}
+
+main {
+    background-color: aqua;
+    height: 60%;
+}
+
+footer {
+    background-color: azure;
+    height: 20%;
+}
+
+/* -------------- */
+
+.Navigation__top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 2em;
+}
+
+.logo,
+.logo>a {
+    position: relative;
+    color: aliceblue;
+    font-weight: 800;
+    font-size: 40px;
+    text-decoration: none;
+    font-weight: 900;
+}
+
+.logo {
+    margin: 0 0 0 32px;
+    letter-spacing: -.3px;
+    float: right;
+    font-size: 31px;
+    font-weight: 700;
+    /* color: #fff; */
+    border-left: 1px solid #5a6779;
+    padding-left: 30px;
+    color: aliceblue;
+}
+
+.Navigation__search {
+    flex-basis: 50%;
+    flex: 3;
+    position: relative;
+}
+
+.flex-between,
+.flex-start-between {
+    display: flex;
+    justify-content: space-between;
+}
+
+.flex-between {
+    align-items: center;
+}
+
+form {
+    line-height: 1;
+    position: relative;
+}
+
+input[type=search] {
+    box-sizing: content-box;
+    border-radius: 35px;
+    border: 1px solid #eceff5;
+    line-height: 3em;
+    display: inline-block;
+    padding: 0 20px 0 10px;
+    width: calc(100% - 70px);
+    font-size: 23px;
+}
+
+input {
+    color: inherit;
+    font: inherit;
+    margin: 0;
+    line-height: normal;
+    color: #3c3e42;
+    outline: none;
+}
+
+@media only screen and (min-width: 768px) and (max-width: 1050px) {
+    input[type=search]+i {
+        display: none;
+    }
+}
+
+input[type=search]+i {
+    position: absolute;
+    left: 60px;
+    font-weight: 700;
+    color: #5a6779;
+}
