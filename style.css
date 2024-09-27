@@ -50,7 +50,7 @@ footer {
 
 /* -------------- */
 
-.Navigation__top {
+.navigation-top {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -79,7 +79,7 @@ footer {
     color: aliceblue;
 }
 
-.Navigation__search {
+.navigation-search {
     flex-basis: 50%;
     flex: 3;
     position: relative;
