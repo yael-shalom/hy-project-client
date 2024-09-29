@@ -38,15 +38,21 @@ header {
     height: 20%;
 }
 
-main {
-    background-color: aqua;
-    height: 60%;
+/* main {
+
+} */
+
+.image-home-page {
+    background-image: url(./assets/images/home-banner-image.png) !important;
+    background-repeat: no-repeat;
+    background-size: auto 80vh;
+    height: 80vh;
 }
 
+/* 
 footer {
     background-color: azure;
-    height: 20%;
-}
+} */
 
 /* -------------- */
 

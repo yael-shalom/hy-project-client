@@ -10,24 +10,29 @@
     <title>QuizMe</title>
 </head>
 
-<body>
-    <header>
-        <div class="navigation-top">
-            <h1 class="logo"> <a href="/"> <span class="l">Q</span>uizMe </a> </h1>
-            <div class="navigation-search">
-                <form method="GET" action="/search" class="flex-between">
-                    <input type="search" placeholder="מה תרצו ללמוד?" name="q" autocomplete="off">
-                    <i class="material-icons">search</i>
-                </form>
-            </div>
+<body class="home">
+    <div id="root" class="page">
+        <header>
+            <nav>
+                <div class="navigation-top">
+                    <h1 class="logo"><a href="/">QuizMe</a></h1>
+                    <div class="navigation-search">
+                        <form method="GET" action="/search" class="flex-between">
+                            <input type="search" placeholder="מה תרצו ללמוד?" name="q" autocomplete="off">
+                            <i class="material-icons">search</i>
+                        </form>
+                    </div>
 
-            <button>כניסה</button>
+                    <button>כניסה</button>
+                </div>
+            </nav>
+        </header>
+
+        <div class="image-home-page">
+            <!-- <main></main>
+    <footer></footer> -->
         </div>
-
-    </header>
-
-    <main></main>
-    <footer></footer>
+    </div>
 </body>
 
 </html>
