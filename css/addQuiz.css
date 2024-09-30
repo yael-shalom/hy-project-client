@@ -1,0 +1,52 @@
+
+header {
+    grid-area: header;
+}
+
+main {
+    grid-area: main;
+}
+
+nav {
+    background-color: var(--second-color);
+    flex-grow: 1;
+    height: 0;
+}
+
+nav a {
+    color: #f2f2f2;
+    padding: 10.5px;
+    text-decoration: none;
+    font-size: 17px;
+}
+
+nav a:hover,
+nav a:visited {
+    background-color: var(--main-color);
+}
+
+footer {
+    background-color: var(--second-color);
+    grid-area: footer;
+}
+
+footer p {
+    color: white;
+    text-align: center;
+    padding: 0px 25px;
+}
+
+iframe {
+    width: 100%;
+    height: 100%;
+}
+
+.logo {
+    height: 75%;
+    align-self: center;
+}
+
+header>div {
+    height: 0;
+    flex-grow: 2;
+}
