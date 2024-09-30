@@ -214,8 +214,14 @@ header {
     margin-left: 25px;
 }
 
+.Button--Light {
+    background: #f2f2f2;
+    color: #7b7b7b;
+}
+
 .Button:hover {
     background-color: #ff3900;
+    color: aliceblue;
 }
 
 @media only screen and (max-width: 1200px) {
