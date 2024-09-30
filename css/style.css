@@ -233,5 +233,11 @@ header {
     .home .Banner .body {
         width: 80%;
         text-align: center;
+        float: none;
+        margin: auto;
+    }
+
+    .home .Banner .body>.main-buttons {
+        margin: auto;
     }
 }
