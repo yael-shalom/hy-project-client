@@ -1,12 +1,9 @@
 body {
     /* background-image: url(./homePage.png); */
     background-color: #1bb1b2;
-    /* background-size: cover; */
-    /* background-repeat: no-repeat; */
     font-family: Rubik, Lato, sans-serif;
-    /* height: 100vh; */
-    /* width: 100vw; */
-    /* margin: 0; */
+    height: 100vh;
+    margin: 0;
     direction: rtl;
 }
 
@@ -167,32 +164,13 @@ input[type=search]+i {
     max-height: 50px;
 }
 
-@media only screen and (min-width: 1300px) {
-    .home .Banner {
-        background-position: 0 104%;
-        background-size: 646px;
-    }
-}
-
 .home .Banner {
     padding: 75px 100px 95px;
     background: url(../assets/images/home-banner-image.png) 0 104% no-repeat;
-    /* background-size: 600px;
-    position: relative;
-    left: 70px;
-    top: 8px;
-    height: 417px; */
+    position: absolute;
+    background-size: contain;
 }
 
-
-.Banner {
-    clear: both;
-    background: #1bb1b2;
-    color: #fff;
-    padding: 52px 0;
-    flex: 1;
-    flex-basis: 100%;
-}
 
 header {
     height: 100px;
@@ -234,4 +212,20 @@ header {
 
 .home .Banner .Button {
     margin-left: 25px;
+}
+
+.Button:hover {
+    background-color: #ff3900;
+}
+
+@media only screen and (max-width: 1200px) {
+    .home .Banner {
+        background-image: none;
+        padding: 0;
+    }
+
+    .home .Banner .body {
+        width: 80%;
+        text-align: center;
+    }
 }
