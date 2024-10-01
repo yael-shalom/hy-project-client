@@ -1,3 +1,2 @@
-# hy-project-client
-wonderful node project
-vhvhgvhgvg
+# quizme project - client side
+wonderful client-side for node project
