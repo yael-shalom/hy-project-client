@@ -1,6 +1,5 @@
 body {
-    /* background-image: url(./homePage.png); */
-    background-color: #1bb1b2;
+    background-color: #d9d5ca;
     font-family: Rubik, Lato, sans-serif;
     height: 100vh;
     margin: 0;
@@ -25,16 +24,8 @@ button:hover {
     background-color: #ff3900;
 }
 
-/* header{
-    width: 100%;
-}
-
-header {
-    height: 20%;
-} */
-
 .image-home-page {
-    background-image: url(../assets/images/home-banner-image.png) !important;
+    background-image: url('../assets/images/image\ \(10\).png') !important;
     background-repeat: no-repeat;
     background-size: auto 80vh;
     height: 80vh;
@@ -166,7 +157,7 @@ input[type=search]+i {
 
 .home .Banner {
     padding: 75px 100px 95px;
-    background: url(../assets/images/home-banner-image.png) 0 104% no-repeat;
+    background: url('../assets/images/image\ \(1\).jpeg') 0 104% no-repeat;
     position: absolute;
     background-size: contain;
 }
@@ -267,7 +258,7 @@ header {
 }
 
 #level-up {
-    background: #1bb1b2;
+    background: #d9d5ca;
     position: relative;
     border-top: 1px solid #ddd;
     border-bottom: 1px solid #ddd;
