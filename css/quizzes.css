@@ -1,0 +1,29 @@
+body {
+    height: 100vh;
+    background-color: #d9d5ca;
+    margin: 0;
+    direction: rtl;
+}
+
+.quiz {
+    height: 100px;
+    background-color: #9cb2bb;
+    position: relative;
+    margin-top: 10px;
+    text-align: center;
+}
+
+#quizzes {
+    display: flex;
+    flex-direction: column;
+    width: 65%;
+}
+
+#categories {
+    width: 30%;
+}
+
+.flex-row {
+    display: flex;
+    flex-direction: row;
+}
