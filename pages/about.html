@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About</title>
+
+    <script>
+      async function getAllUsers() {
+        try {
+          const res = await fetch("http://localhost:5000/users");
+          const users = await res.json();
+          console.log(users);
+
+          const container = document.querySelector("#container");
+          container.innerHTML = users.map((u) => `<p>${u.name}</p>`).join("");
+        } catch (error) {
+          console.log(error);
+        }
+      }
+      async function login() {
+        try {
+          const res = await fetch("http://localhost:5000/users/login", {
+            method: "POST",
+            body: JSON.parse({ name: "abc" }),
+          });
+          const users = await res.json();
+          console.log(users);
+
+          const container = document.querySelector("#container");
+          container.innerHTML = users.map((u) => `<p>${u.name}</p>`).join("");
+        } catch (error) {
+          console.log(error);
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <button onclick="getAllUsers()">get users</button>
+    <div id="container"></div>
+  </body>
+</html>

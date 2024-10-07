@@ -241,3 +241,77 @@ header {
         margin: auto;
     }
 }
+
+.home #partner-program {
+    background: url(../assets/images/partner-program-rtl.jpg) 50% 14% no-repeat;
+    background-size: cover;
+    font-size: 1.2em;
+    position: relative;
+    top: 760px;
+    padding: 60px;
+    color: #ddd;
+}
+
+.wrap--large {
+    padding-top: 5em;
+    padding-bottom: 5em;
+}
+
+.home #hot-quizzes {
+    background: url(../assets/images/hot-quizzes.png) 50% 14% no-repeat;
+    background-size: cover;
+    font-size: 1.2em;
+    position: relative;
+    top: 760px;
+    padding: 325px;
+}
+
+#level-up {
+    background: #1bb1b2;
+    position: relative;
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+    top: 760px;
+}
+
+#level-up .body {
+    width: 60%;
+    text-align: center;
+    position: relative;
+    right: 15%;}
+
+#level-up>.container {
+    background: url(../assets/images/level-up.png) 94% 50% no-repeat;
+    background-size: 383px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #3c3e42;
+    margin-top: 0;
+    letter-spacing: .5px;
+}
+
+.Grid__column {
+    position: relative;
+}
+
+.Grid__column.six {
+    width: calc(49.995% - 15px);
+}
+
+.Grid__column.six.offset {
+    margin-left: 50%;
+}
+
+.Grid__column.six:nth-child(12n+1) {
+    clear: right;
+}
+
+.text-align-left {
+    text-align: left;
+}
+
+#partner-program a {
+    color: #99c93d;
+    text-decoration: none;
+}
