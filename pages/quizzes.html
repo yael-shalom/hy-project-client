@@ -4,50 +4,18 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>ALL QUIZZES</title>
-    <link rel="stylesheet" href="../css/allQuizzes.css" />
+    <link rel="stylesheet" href="../css/quizzes.css" />
     <link
       rel="shortcut icon"
       href="../assets/images/logo.png"
       type="image/x-icon"
     />
+    <script src="../js/quizzes.js"></script>
   </head>
   <body onload="getAllQuizzes(), getAllCategories()">
     <div class="flex-row">
       <div id="categories"></div>
       <div id="quizzes"></div>
     </div>
-    <script>
-      const getAllQuizzes = async () => {
-        try {
-          const res = await fetch("http://localhost:5000/quizzes");
-          const quizzes = await res.json();
-          console.log(quizzes);
-          const quizzesCon = document.querySelector("#quizzes");
-          for (const quiz of quizzes) {
-            let div = document.createElement("div");
-            div.classList.add("quiz");
-            div.innerHTML = quiz.name;
-            quizzesCon.appendChild(div);
-          }
-          //   quizzesCon.innerHTML = quizzes.map((q) => `<p>${q.name}</p>`).join("");
-        } catch (error) {
-          console.log(error);
-        }
-      };
-
-      const getAllCategories = async () => {
-        const res = await fetch("http://localhost:5000/categories");
-        const categories = await res.json();
-        console.log(categories);
-        const categoryCon = document.querySelector("#categories");
-        let ul = document.createElement("ul");
-        for (const category of categories) {
-            let li = document.createElement("li");
-            li.textContent = category.name;
-            ul.appendChild(li);
-        }
-        categoryCon.appendChild(ul);
-      };
-    </script>
   </body>
 </html>
