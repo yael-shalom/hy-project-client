@@ -14,7 +14,7 @@ const getAllQuizzes = async () => {
             div.addEventListener("click", (event) => {
                 window.open(`./quiz.html?id=${quiz._id}`, '_self');
             });
-            quizzesCon.appendChild(div);
+            quizzesCon.append(div);
         }
     } catch (error) {
         console.log(error);
@@ -30,7 +30,7 @@ const getAllCategories = async () => {
     for (const category of categories) {
         let li = document.createElement("li");
         li.textContent = category.name;
-        ul.appendChild(li);
+        ul.append(li);
     }
-    categoryCon.appendChild(ul);
+    categoryCon.append(ul);
 };
