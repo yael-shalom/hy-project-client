@@ -1,6 +1,8 @@
+const baseURL = 'http://localhost:5000'
+
 const getAllQuizzes = async () => {
     try {
-        const res = await fetch("http://localhost:5000/quizzes");
+        const res = await fetch(`${baseURL}/quizzes`);
         const quizzes = await res.json();
         console.log(quizzes);
         const quizzesCon = document.querySelector("#quizzes");
@@ -20,7 +22,7 @@ const getAllQuizzes = async () => {
 };
 
 const getAllCategories = async () => {
-    const res = await fetch("http://localhost:5000/categories");
+    const res = await fetch(`${baseURL}/categories`);
     const categories = await res.json();
     console.log(categories);
     const categoryCon = document.querySelector("#categories");
