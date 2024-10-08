@@ -17,7 +17,7 @@ const getQuizById = async (id) => {
     quizData.append(h1);
     const questions = quiz.questions;//קבלת כל השאלות
     console.log(questions);
-    const container = document.createElement("div");//מכיל את כל השאלות/תשובות
+    const container = document.createElement("form");//מכיל את כל השאלות/תשובות
     container.classList.add("flex-col");
     for (const q of questions) {
       let answerNum = 0;
