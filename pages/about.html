@@ -14,39 +14,62 @@
 
 <body>  
 
-   <header>
-    <div class="source"> 
+
+  <header>
+    <nav>
+        <div class="navigation-top">
+            <h1 class="logo"><a href="./index.html">QuizMe</a></h1>
+            <div class="navigation-search">
+                <form method="GET" action="/search" class="flex-between">
+                    <input type="search" placeholder="מה תרצו ללמוד?" name="q" autocomplete="off">
+                    <i class="material-icons">search</i>
+                </form>
+            </div>
+
+            <a href="#" class="openModal Button Button--Callout"> כניסה </a>
+        </div>
+    </nav>
+
+   <div class="source"> 
         <a target="content"  class="menu" href="./pages/about.html"> אודות </a>
         <a target="content"  class="menu" href="./pages/allQuizzes.html"> שאלונים </a>
         <a target="content"  class="menu" href="./pages/addQuize.html"> הוספת שאלון </a>
         <a target="content"  class="menu" href="./pages/myQuizzes.html"> השאלונים שלי </a>
-     </div>
-   </header>
-    
-   <div class="nav" id="place">
-     <nav>
-      <ul>
-       <li><a href ="#about"> אודות </a></li>
-        <li><a href ="#photo">  שיתופים  </a></li>
-        <li><a href ="#place"> המלצות</a></li>
-        <li><a href ="#share"> חשיבות  </a></li>
-        <li><a href ="./reply.html"> שלח משוב </a></li>
-      </ul>
-     </nav>
     </div>
 
+</header>
 
+
+
+  <div class="nav" id="place">
+    <nav>
+     <ul>
+      <li><a href ="./index.html"> דף הבית </a></li>
+       <li><a href ="./P2.html"> מטיילים בצפון </a></li>
+       <li><a href ="./P3.html"> מטיילים במרכז </a></li>
+       <li><a href ="./P4.html"> מטיילים בדרום </a></li>
+       <li><a href ="./reply.html"> שלח משוב </a></li>
+     </ul>
+    </nav>
+   </div>
 
   <main>
    <div id="about" class="about">
      <br> <br> <br><br>
-     <h2>  QUIZE </h2>
-     <p>
-        השאלונים ב-QuizMe מבוססים על ידע שיתופי של אלפי סטודנטים בישראל ממגוון מוסדות;
-         <br> בן גוריון, העברית, סמי שמעון ועוד. כל משתמש יכול לשתף מבחנים בקלות ובמהירות ולתרום למאגר השחזורים המקיף ביותר לאקדמאים.
-     </p>
-    <h2 >קצת על H&Y</h2>
-    <p > אחלה חברה! </p>
+     <h2>  ISRAELY </h2>
+     <p>מדינת ישראל שוכנת במזרח התיכון, גובלת בים התיכון במערב, בלבנון בצפון,<br>
+       בסוריה ובירדן במזרח ובמצרים בדרום מערב. למרות ששטחה קטן יחסית, כ-22,072 קמ"ר.</p>
+     <p> הגיאוגרפיה של ישראל מגוונת מאוד, עם הרים, מדבריות, מישורים וחופים.
+      <br>מצפון, הרי הגולן והגליל העליון הם אזורים הרריים המציעים נופי נוף ואתרים היסטוריים.
+       <br>לאורך חוף הים התיכון יש מישורים פוריים, ביניהם מישור החוף ומישור השרון. 
+       <br>ממזרח, בקעת הירדן וים המלח מהווים חלק מהגבול הטבעי בין ישראל לירדן. 
+       <br>לבסוף, מדבר הנגב, המהווה יותר ממחצית משטח הארץ, משתרע על פני דרום ישראל.
+      </p>
+    <h2 >קצת על H&T</h2>
+    <p >חברת H&T חברת "תיירים ישראלים" הגדולה בעולם - נוסדה בשנת 1970 <br>
+      ע"מ לתת אפשרות לכל ישראלי להנות ממגוון הנאות שארצנו הקדושה מציעה. <br> 
+      הוגה הרעיון Hodaya יחד עם בעל חברת המימוש - TAMAR הפכו את החלום למציאות. <br>
+       והנה - אתם נהנים מפרי ידייהם.<br> 💕בהנאה💕 </p>
   </div>
 
   <div id="photo">
@@ -59,7 +82,7 @@
       <div class="item4"><img src="pR/index/p (5).gif" height="200" width="250" class="photo"></div> 
       <video  class="media" src="pR/index/Israel.mp4"  controls loop autoplay></video></div>
    </div>
-
+  
     <div class="share" id="share">
       <h2>מטיילים ממליצים</h2>
       <ul>
@@ -82,9 +105,7 @@
   </form>
 </body>
 </html>
-
-
-                            
+               
 
 
                           
