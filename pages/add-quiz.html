@@ -14,13 +14,29 @@
 
 <body>  
 
+
   <header>
+    <nav>
+        <div class="navigation-top">
+            <h1 class="logo"><a href="./index.html">QuizMe</a></h1>
+            <div class="navigation-search">
+                <form method="GET" action="/search" class="flex-between">
+                    <input type="search" placeholder="מה תרצו ללמוד?" name="q" autocomplete="off">
+                    <i class="material-icons">search</i>
+                </form>
+            </div>
+
+            <a href="#" class="openModal Button Button--Callout"> כניסה </a>
+        </div>
+    </nav>
+
    <div class="source"> 
         <a target="content"  class="menu" href="./pages/about.html"> אודות </a>
         <a target="content"  class="menu" href="./pages/allQuizzes.html"> שאלונים </a>
         <a target="content"  class="menu" href="./pages/addQuize.html"> הוספת שאלון </a>
         <a target="content"  class="menu" href="./pages/myQuizzes.html"> השאלונים שלי </a>
     </div>
+
 </header>
 
 
