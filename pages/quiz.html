@@ -3,12 +3,11 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Quiz</title>
+    <link rel="stylesheet" href="../css/quiz.css" />
+    <script src="../js/quiz.js"></script>
   </head>
-  <body>
-    <script>
-      const searchParams = new URLSearchParams(location.search);
-      console.log(searchParams.get("id"));
-    </script>
+  <body onload="getQuizById(searchParams.get('id'))">
+    <div id="quizData"></div>
   </body>
 </html>
