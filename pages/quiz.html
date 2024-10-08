@@ -3,12 +3,48 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Quiz</title>
+    <link rel="stylesheet" href="../css/quiz.css">
   </head>
-  <body>
+  <body onload="getQuizById(searchParams.get('id'))">
+    <div id="quizData"></div>
     <script>
       const searchParams = new URLSearchParams(location.search);
       console.log(searchParams.get("id"));
+      const id = searchParams.get("id");
+
+      const baseURL = "http://localhost:5000";
+
+      const getQuizById = async (id) => {
+        try {
+          const res = await fetch(`${baseURL}/quizzes/${id}`);
+          const quiz = await res.json();
+          console.log(quiz);
+          const quizData = document.querySelector("#quizData");
+          let h1 = document.createElement("h1");
+          h1.textContent = quiz.name;
+          quizData.append(h1);
+          const questions = quiz.questions;
+          console.log(questions);
+          const container = document.createElement("div");
+          container.classList.add("flex-col");
+          for (const q of questions) {
+            const h4 = document.createElement("h4");
+            h4.textContent = q.content;
+            const ul = document.createElement("ul");
+            for (const answer of q.answers) {
+              const li = document.createElement("li");
+              li.textContent = answer.content;
+              ul.appendChild(li);
+            }
+            container.appendChild(h4);
+            container.appendChild(ul);
+          }
+          quizData.appendChild(container);
+        } catch (error) {
+          console.log(error);
+        }
+      };
     </script>
   </body>
 </html>
