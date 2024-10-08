@@ -9,7 +9,7 @@ body {
 button {
     position: relative;
     color: aliceblue;
-    background-color: #ff5c2d;
+    background-color: #295773;
     border: none;
     border-radius: 5px;
     height: 2.7em;
@@ -21,7 +21,7 @@ button {
 }
 
 button:hover {
-    background-color: #ff3900;
+    background-color: #236e9d;
 }
 
 .image-home-page {
@@ -43,7 +43,7 @@ button:hover {
 .logo,
 .logo>a {
     position: relative;
-    color: aliceblue;
+    color: #614a3f;
     font-weight: 800;
     font-size: 40px;
     text-decoration: none;
@@ -57,9 +57,9 @@ button:hover {
     font-size: 31px;
     font-weight: 700;
     /* color: #fff; */
-    border-left: 1px solid #5a6779;
+    border-left: 1px solid #295773;
     padding-left: 30px;
-    color: aliceblue;
+    color: #f6f4f1;
 }
 
 .navigation-search {
@@ -90,8 +90,8 @@ input[type=search] {
     line-height: 3em;
     display: inline-block;
     padding: 0 20px 0 10px;
-    /* width: calc(100% - 75px); */
     width: 75%;
+    background-color: #f6f4f1;
 }
 
 input {
@@ -134,7 +134,7 @@ input[type=search]+i {
 }
 
 .Button--Callout {
-    background: #ff5c2d;
+    background: #295773;
     padding: 17px 45px;
     color: #fff;
     border: none;
@@ -182,7 +182,7 @@ header {
     margin-bottom: 50px;
     padding-left: 50px;
     line-height: 2em;
-    color: #cdfbff;
+    color: #3b4956;
 }
 
 .home .Banner h1 {
@@ -193,7 +193,7 @@ header {
     position: relative;
     line-height: 1.1;
     letter-spacing: -1px;
-    color: #fff;
+    color: #295773;
     margin: 1em 0;
 }
 
@@ -206,12 +206,12 @@ header {
 }
 
 .Button--Light {
-    background: #f2f2f2;
-    color: #7b7b7b;
+    background: #f6f4f1;
+    color: #295773;
 }
 
 .Button:hover {
-    background-color: #ff3900;
+    background-color: #236e9d;
     color: aliceblue;
 }
 
