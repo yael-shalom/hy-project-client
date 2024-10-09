@@ -46,7 +46,7 @@ const getQuizById = async (id) => {
     const button = document.createElement("button");
     button.textContent = "חשב";
     button.addEventListener("click", () => {
-        
+        ///////////////////////////////////////////////////////////////////////////////////////////////////////////
     });
     container.appendChild(button);
   } catch (error) {

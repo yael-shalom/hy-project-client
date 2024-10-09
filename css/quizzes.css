@@ -8,11 +8,12 @@ body {
 
 .quiz {
     height: 100px;
-    background-color: #9cb2bb;
+    background-color: #295773;
     position: relative;
     margin-top: 10px;
     text-align: center;
     cursor: pointer;
+    color: #d9d5ca;
 }
 
 #quizzes {
