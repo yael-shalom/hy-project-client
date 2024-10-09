@@ -14,3 +14,21 @@ body {
     display: flex;
     flex-direction: row;
 }
+
+.correct {
+    border: 2px solid;
+    border-radius: 16px;
+    width: fit-content;
+}
+
+.correct label {
+    padding: 5px 0 5px 7px;
+}
+
+.right {
+    accent-color: green;
+}
+
+.wrong {
+    accent-color: red;
+}

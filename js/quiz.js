@@ -7,6 +7,8 @@ const baseURL = "http://localhost:5000";
 
 const container = document.createElement("div");//מכיל את כל השאלות/תשובות
 container.classList.add("flex-col");
+const scoreCon = document.createElement("h1");
+let score = 0;
 
 const getQuizById = async (id) => {
     try {
@@ -46,7 +48,8 @@ const getQuizById = async (id) => {
 
         const button = document.createElement("button");
         button.textContent = "חשב";
-        button.addEventListener("click", () => { calculate(questions) });
+        button.addEventListener("click", () => { calculate(quiz) });
+        container.appendChild(scoreCon);
         container.appendChild(button);
     } catch (error) {
         console.log(error);
@@ -54,9 +57,11 @@ const getQuizById = async (id) => {
 };
 
 
-function calculate(questions) {
+function calculate(quiz) {
+    const questions = quiz.questions;
+    console.log(quiz);
+    
     const inputs = document.querySelectorAll("input");
-    let score = 0;
     for (const input of inputs) {
         const answerId = input.id;
         const checked = input.checked;
@@ -64,11 +69,26 @@ function calculate(questions) {
         const question = questions.find(q => q._id === questionId);
         const answer = question.answers.find(a => a._id === answerId);
         const isRight = answer.isRight;
-        if (isRight === true && checked === true)
-            score += question.score;
+        if (isRight === true && checked === true){
+            score += quiz.score;
+            input.classList.add("right");
+        }
+        else{
+            input.classList.add("wrong");
+        }
+        if(isRight === true)
+            input.parentElement.classList.add("correct");
     }
     console.log(score);
-    const h1 = document.createElement("h1");
-    h1.textContent = score;
-    container.appendChild(h1);
+    showScore();
+    // container.appendChild(scoreCon);
+}
+
+let count = 0;
+function showScore() {
+    scoreCon.textContent = `${count}%`;
+    count++;
+    if (count <= score) {
+        setTimeout(showScore, 40); // Adjust the delay (in milliseconds) for the counting speed
+    }
 }
