@@ -17,11 +17,17 @@
     <label for="name">Quiz Name:</label>
     <input type="text" id="name" name="name" required><br>
 
-    <label for="categories">Categories:</label>
-    <input type="text" id="categories" name="categories"><br>
+    <label for="ownerName">Owner Name:</label>
+    <input type="text" id="ownerName" name="ownerName" required><br>
 
-    <label for="imageUrl">Image URL:</label>
-    <input type="text" id="imageUrl" name="imageUrl"><br>
+    <label for="categories">Category:</label>
+    <select id="categories" name="categories">
+        <option value="Physics">Physics</option>
+        <option value="Biology">Biology</option>
+        <option value="Chemistry">Chemistry</option>
+        <option value="Mathematics">Mathematics</option>
+        <option value="Other">Other</option>
+    </select><br>
 
     <div id="questionsContainer">
         <h3>Questions</h3>
@@ -29,9 +35,9 @@
     </div>
     
     <button type="button" onclick="addQuestion()">Add Question</button><br>
-
     <button type="submit">Submit Quiz</button>
 </form>
+
 
 </body>
 </html>

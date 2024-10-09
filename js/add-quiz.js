@@ -8,12 +8,6 @@ function addQuestion() {
         <h4>Question ${questionCount + 1}</h4>
         <label for="questionContent${questionCount}">Content:</label>
         <input type="text" id="questionContent${questionCount}" name="questionContent" required><br>
-        
-        <label for="questionScore${questionCount}">Score:</label>
-        <input type="number" id="questionScore${questionCount}" name="questionScore"><br>
-        
-        <label for="questionImageUrl${questionCount}">Image URL:</label>
-        <input type="text" id="questionImageUrl${questionCount}" name="questionImageUrl"><br>
 
         <div class="answersContainer" id="answersContainer${questionCount}">
             <h5>Answers</h5>
@@ -34,7 +28,7 @@ function addAnswer(questionIndex) {
         <input type="text" id="answerContent${questionIndex}_${answerCount}" name="answerContent" required><br>
 
         <label for="isRight${questionIndex}_${answerCount}">Is Correct:</label>
-        <input type="checkbox" id="isRight${questionIndex}_${answerCount}" name="isRight"><br>
+        <input type="radio" id="isRight${questionIndex}_${answerCount}" name="isRight${questionIndex}" value="${answerCount}" required><br>
     `;
     answersContainer.appendChild(answerDiv);
 }
@@ -45,8 +39,8 @@ document.getElementById('quizForm').addEventListener('submit', async function (e
 
     const quizData = {
         name: document.getElementById('name').value,
-        categories: document.getElementById('categories').value || "שונות",
-        imageUrl: document.getElementById('imageUrl').value,
+        owner: document.getElementById('ownerName').value,
+        category: document.getElementById('categories').value,
         questions: []
     };
 
@@ -54,8 +48,6 @@ document.getElementById('quizForm').addEventListener('submit', async function (e
     for (let i = 0; i < questionsContainer.children.length; i++) {
         const questionDiv = questionsContainer.children[i];
         const questionContent = document.getElementById(`questionContent${i}`).value;
-        const questionScore = document.getElementById(`questionScore${i}`).value;
-        const questionImageUrl = document.getElementById(`questionImageUrl${i}`).value;
 
         const answers = [];
         const answersContainer = document.getElementById(`answersContainer${i}`);
@@ -70,8 +62,6 @@ document.getElementById('quizForm').addEventListener('submit', async function (e
 
         quizData.questions.push({
             content: questionContent,
-            score: questionScore,
-            imageUrl: questionImageUrl,
             answers: answers
         });
     }
