@@ -24,12 +24,12 @@ function addAnswer(questionIndex) {
 
     const answerDiv = document.createElement('div');
     answerDiv.innerHTML = `
-        <label for="answerContent${questionIndex}_${answerCount}">Answer:</label>
-        <input type="text" id="answerContent${questionIndex}_${answerCount}" name="answerContent" required><br>
+                            <label for="answerContent${questionIndex}_${answerCount}">Answer:</label>
+                            <input type="text" id="answerContent${questionIndex}_${answerCount}" name="answerContent" required><br>
 
-        <label for="isRight${questionIndex}_${answerCount}">Is Correct:</label>
-        <input type="radio" id="isRight${questionIndex}_${answerCount}" name="isRight${questionIndex}" value="${answerCount}" required><br>
-    `;
+                            <label for="isRight${questionIndex}_${answerCount}">Is Correct:</label>
+                            <input type="radio" id="isRight${questionIndex}_${answerCount}" name="isRight${questionIndex}" value="${answerCount}" required><br>
+                        `;
     answersContainer.appendChild(answerDiv);
 }
 
@@ -86,3 +86,4 @@ document.getElementById('quizForm').addEventListener('submit', async function (e
         alert('An error occurred while adding the quiz.');
     }
 });
+
