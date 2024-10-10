@@ -24,13 +24,14 @@ const getQuizById = async (id) => {
         header.appendChild(h1);
         quizData.append(header);
         const questions = quiz.questions;//קבלת כל השאלות
-        console.log(questions);
+        shuffleArray(questions);
         for (const q of questions) {
             const questionContainer = document.createElement("div");
             questionContainer.classList.add("question-container");
             const h4 = document.createElement("h4");
             h4.textContent = q.content;//תוכן השאלה
             questionContainer.appendChild(h4);
+            shuffleArray(q.answers);
             for (const answer of q.answers) {//מעבר על כל התשובות ויצירת כפתורי רדיו
                 const quizCon = document.createElement("div");
                 quizCon.classList.add("flex-row");
@@ -48,14 +49,10 @@ const getQuizById = async (id) => {
             container.appendChild(questionContainer);
         }
         quizData.appendChild(container);
-
-        const inputs = document.querySelectorAll("input");
-        console.log(inputs);
-
-
         const button = document.createElement("button");
         button.textContent = "חשב";
         button.addEventListener("click", () => { calculate(quiz) });
+        button.classList.add("Button--Light");
         container.appendChild(button);
     } catch (error) {
         console.log(error);
@@ -64,12 +61,12 @@ const getQuizById = async (id) => {
 
 
 function calculate(quiz) {
+    score = 0;
     window.scrollTo(0, 0);
     header.appendChild(scoreCon);
-    const questions = quiz.questions;
-    console.log(quiz);
-    
+    const questions = quiz.questions;    
     const inputs = document.querySelectorAll("input");
+
     for (const input of inputs) {
         input.onclick = ()=>{return false;};//חסימת כפתורי הרדיו שלא יהיו ניתנים לשינוי
         const answerId = input.id;
@@ -88,16 +85,21 @@ function calculate(quiz) {
         if(isRight === true)
             input.parentElement.classList.add("correct");
     }
-    console.log(score);
-    showScore();
-    // container.appendChild(scoreCon);
+    showScore(0);
 }
 
-let count = 0;
-function showScore() {
+function showScore(count) {
     scoreCon.textContent = `${count}%`;
     count++;
     if (count <= score) {
-        setTimeout(showScore, 40); // Adjust the delay (in milliseconds) for the counting speed
+        setTimeout(showScore, 40, count); 
     }
+}
+
+function shuffleArray(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+    }
+    return array;
 }
