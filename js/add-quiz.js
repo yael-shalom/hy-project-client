@@ -1,89 +1,75 @@
-// Function to add a new question dynamically
+document.getElementById('quiz-form').addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    const quizName = document.getElementById('quiz-name').value;
+    const creatorName = document.getElementById('creator-name').value;
+    const category = document.getElementById('category').value;
+
+    const questions = [];
+    document.querySelectorAll('.question').forEach(questionEl => {
+        const questionContent = questionEl.querySelector('.question-content').value;
+        const answers = [];
+
+        questionEl.querySelectorAll('.answer').forEach(answerEl => {
+            const answerContent = answerEl.querySelector('.answer-content').value;
+            const isRight = answerEl.querySelector('.is-right').checked;
+            answers.push({ content: answerContent, isRight: isRight });
+        });
+
+        questions.push({ content: questionContent, answers: answers });
+    });
+
+    const quiz = {
+        name: quizName,
+        owner: { name: creatorName },
+        categories: category,
+        questions: questions
+    };
+
+    console.log(quiz);
+    // Here you would send the quiz object to the server via fetch or another method.
+    // Example:
+    // fetch('/api/quizzes', {
+    //     method: 'POST',
+    //     headers: { 'Content-Type': 'application/json' },
+    //     body: JSON.stringify(quiz)
+    // }).then(response => response.json()).then(data => {
+    //     console.log('Quiz created:', data);
+    // }).catch(error => {
+    //     console.error('Error:', error);
+    // });
+});
+
 function addQuestion() {
-    const questionsContainer = document.getElementById('questionsContainer');
-    const questionCount = questionsContainer.children.length;
+    const questionsContainer = document.getElementById('questions-container');
+    const questionCount = document.querySelectorAll('.question').length + 1;
 
     const questionDiv = document.createElement('div');
+    questionDiv.classList.add('question');
     questionDiv.innerHTML = `
-        <h4>Question ${questionCount + 1}</h4>
-        <label for="questionContent${questionCount}">Content:</label>
-        <input type="text" id="questionContent${questionCount}" name="questionContent" required><br>
-
-        <div class="answersContainer" id="answersContainer${questionCount}">
+        <h4>Question ${questionCount}</h4>
+        <label>Question Content:</label>
+        <input type="text" class="question-content" required><br><br>
+        <div class="answers-container">
             <h5>Answers</h5>
+            <!-- Answers will be dynamically added here -->
         </div>
-        <button type="button" onclick="addAnswer(${questionCount})">Add Answer</button><br>
+        <button type="button" onclick="addAnswer(this)">Add Answer</button><br><br>
     `;
     questionsContainer.appendChild(questionDiv);
 }
 
-// Function to add an answer to a specific question
-function addAnswer(questionIndex) {
-    const answersContainer = document.getElementById(`answersContainer${questionIndex}`);
-    const answerCount = answersContainer.children.length;
+function addAnswer(button) {
+    const answersContainer = button.parentElement.querySelector('.answers-container');
+    const answerCount = answersContainer.querySelectorAll('.answer').length + 1;
 
     const answerDiv = document.createElement('div');
+    answerDiv.classList.add('answer');
     answerDiv.innerHTML = `
-                            <label for="answerContent${questionIndex}_${answerCount}">Answer:</label>
-                            <input type="text" id="answerContent${questionIndex}_${answerCount}" name="answerContent" required><br>
-
-                            <label for="isRight${questionIndex}_${answerCount}">Is Correct:</label>
-                            <input type="radio" id="isRight${questionIndex}_${answerCount}" name="isRight${questionIndex}" value="${answerCount}" required><br>
-                        `;
+        <label>Answer ${answerCount}:</label>
+        <input type="text" class="answer-content" required>
+        <label>Is Correct:</label>
+        <input type="checkbox" class="is-right"><br><br>
+    `;
     answersContainer.appendChild(answerDiv);
 }
-
-// Function to handle form submission
-document.getElementById('quizForm').addEventListener('submit', async function (event) {
-    event.preventDefault(); // Prevent the form from reloading the page
-
-    const quizData = {
-        name: document.getElementById('name').value,
-        owner: document.getElementById('ownerName').value,
-        category: document.getElementById('categories').value,
-        questions: []
-    };
-
-    const questionsContainer = document.getElementById('questionsContainer');
-    for (let i = 0; i < questionsContainer.children.length; i++) {
-        const questionDiv = questionsContainer.children[i];
-        const questionContent = document.getElementById(`questionContent${i}`).value;
-
-        const answers = [];
-        const answersContainer = document.getElementById(`answersContainer${i}`);
-        for (let j = 0; j < answersContainer.children.length; j++) {
-            const answerContent = document.getElementById(`answerContent${i}_${j}`).value;
-            const isRight = document.getElementById(`isRight${i}_${j}`).checked;
-            answers.push({
-                content: answerContent,
-                isRight: isRight
-            });
-        }
-
-        quizData.questions.push({
-            content: questionContent,
-            answers: answers
-        });
-    }
-
-    // Send the data to the server
-    try {
-        const response = await fetch('/api/quizzes', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(quizData)
-        });
-
-        if (response.ok) {
-            alert('Quiz added successfully!');
-        } else {
-            alert('Error adding quiz.');
-        }
-    } catch (error) {
-        console.error('Error:', error);
-        alert('An error occurred while adding the quiz.');
-    }
-});
-

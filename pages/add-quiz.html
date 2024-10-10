@@ -11,33 +11,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="" rel="stylesheet" />
 </head>
-
 <body>
-  <form id="quizForm">
-    <label for="name">Quiz Name:</label>
-    <input type="text" id="name" name="name" required><br>
+    <h1>Create a New Quiz</h1>
+    <form id="quiz-form">
+        <label for="quiz-name">Quiz Name:</label>
+        <input type="text" id="quiz-name" name="quizName" required><br><br>
 
-    <label for="ownerName">Owner Name:</label>
-    <input type="text" id="ownerName" name="ownerName" required><br>
+        <label for="creator-name">Creator Name:</label>
+        <input type="text" id="creator-name" name="creatorName" required><br><br>
 
-    <label for="categories">Category:</label>
-    <select id="categories" name="categories">
-        <option value="Physics">Physics</option>
-        <option value="Biology">Biology</option>
-        <option value="Chemistry">Chemistry</option>
-        <option value="Mathematics">Mathematics</option>
-        <option value="Other">Other</option>
-    </select><br>
+        <label for="category">Category:</label>
+        <select id="category" name="category">
+            <option value="Physics">Physics</option>
+            <option value="Biology">Biology</option>
+            <option value="Chemistry">Chemistry</option>
+            <option value="Mathematics">Mathematics</option>
+            <option value="Other">Other</option>
+        </select><br><br>
 
-    <div id="questionsContainer">
-        <h3>Questions</h3>
-        <!-- שאלות יתווספו כאן דינמית -->
-    </div>
-    
-    <button type="button" onclick="addQuestion()">Add Question</button><br>
-    <button type="submit">Submit Quiz</button>
-</form>
+        <div id="questions-container">
+            <h3>Questions</h3>
+            <!-- Questions will be dynamically added here -->
+        </div>
 
+        <button type="button" onclick="addQuestion()">Add Question</button><br><br>
+        <button type="submit">Submit Quiz</button>
+    </form>
 
+    <script src="quiz.js"></script>
 </body>
 </html>
