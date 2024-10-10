@@ -8,7 +8,10 @@ const baseURL = "http://localhost:5000";
 const container = document.createElement("div");//מכיל את כל השאלות/תשובות
 container.classList.add("flex-col");
 const scoreCon = document.createElement("h1");
+scoreCon.classList.add("score");
 let score = 0;
+const header = document.createElement("header");
+header.classList.add("flex-row");
 
 const getQuizById = async (id) => {
     try {
@@ -18,13 +21,16 @@ const getQuizById = async (id) => {
         const quizData = document.querySelector("#quizData");//מכיל את כל פרטי השאלון
         let h1 = document.createElement("h1");
         h1.textContent = quiz.name;//כותרת השאלון
-        quizData.append(h1);
+        header.appendChild(h1);
+        quizData.append(header);
         const questions = quiz.questions;//קבלת כל השאלות
         console.log(questions);
         for (const q of questions) {
+            const questionContainer = document.createElement("div");
+            questionContainer.classList.add("question-container");
             const h4 = document.createElement("h4");
             h4.textContent = q.content;//תוכן השאלה
-            container.appendChild(h4);
+            questionContainer.appendChild(h4);
             for (const answer of q.answers) {//מעבר על כל התשובות ויצירת כפתורי רדיו
                 const quizCon = document.createElement("div");
                 quizCon.classList.add("flex-row");
@@ -37,8 +43,9 @@ const getQuizById = async (id) => {
                 input.name = q._id;
                 quizCon.appendChild(input);
                 quizCon.appendChild(label);
-                container.appendChild(quizCon);
+                questionContainer.appendChild(quizCon);
             }
+            container.appendChild(questionContainer);
         }
         quizData.appendChild(container);
 
@@ -49,7 +56,6 @@ const getQuizById = async (id) => {
         const button = document.createElement("button");
         button.textContent = "חשב";
         button.addEventListener("click", () => { calculate(quiz) });
-        container.appendChild(scoreCon);
         container.appendChild(button);
     } catch (error) {
         console.log(error);
@@ -58,11 +64,14 @@ const getQuizById = async (id) => {
 
 
 function calculate(quiz) {
+    window.scrollTo(0, 0);
+    header.appendChild(scoreCon);
     const questions = quiz.questions;
     console.log(quiz);
     
     const inputs = document.querySelectorAll("input");
     for (const input of inputs) {
+        input.onclick = ()=>{return false;};//חסימת כפתורי הרדיו שלא יהיו ניתנים לשינוי
         const answerId = input.id;
         const checked = input.checked;
         const questionId = input.name;
