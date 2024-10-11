@@ -73,3 +73,4 @@ function addAnswer(button) {
     `;
     answersContainer.appendChild(answerDiv);
 }
+    
