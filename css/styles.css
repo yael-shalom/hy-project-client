@@ -1,8 +1,8 @@
 *
 {
     text-align: center;
-    background-color:rgb(255, 235, 197);
-    color: black;
+    background-color:#d9d5ca;
+    color: #295773;
 
 }
 
@@ -258,8 +258,6 @@ footer p
 
 body 
 {
-  /* background-image: url(./homePage.png); */
-  background-color: #1bb1b2;
   font-family: Rubik, Lato, sans-serif;
   height: 100vh;
   margin: 0;
@@ -269,8 +267,8 @@ body
 button 
 {
   position: relative;
-  color: aliceblue;
-  background-color: #ff5c2d;
+  color: #d9d5ca;
+  background-color: #295773;
   border: none;
   border-radius: 5px;
   height: 2.7em;
