@@ -10,10 +10,10 @@ body {
     height: 100px;
     background-color: #295773;
     position: relative;
-    margin-top: 10px;
     text-align: center;
     cursor: pointer;
     color: #d9d5ca;
+    border-top: 0.2px solid #386581;
 }
 
 #quizzes {
@@ -23,10 +23,18 @@ body {
 }
 
 #categories {
-    width: 30%;
+    margin: 0 auto;
 }
 
 .flex-row {
     display: flex;
     flex-direction: row;
+}
+
+ul {
+    list-style-type: none;
+}
+
+li {
+    margin: 10px;
 }
