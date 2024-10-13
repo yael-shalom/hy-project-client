@@ -62,7 +62,7 @@ const getQuizById = async (id) => {
 
 function calculate(quiz) {
     score = 0;
-    window.scrollTo(0, 0);
+    scrollToTop()
     header.appendChild(scoreCon);
     const questions = quiz.questions;    
     const inputs = document.querySelectorAll("input");
@@ -102,4 +102,12 @@ function shuffleArray(array) {
         [array[i], array[j]] = [array[j], array[i]];
     }
     return array;
+}
+
+function scrollToTop() {
+    const c = document.documentElement.scrollTop || document.body.scrollTop;
+    if (c > 0) {
+        window.requestAnimationFrame(scrollToTop);
+        window.scrollTo(0, c - c / 8);
+    }
 }
