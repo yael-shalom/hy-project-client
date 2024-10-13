@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PICABOO</title>
+    <link href="../css/frame.css" rel="stylesheet" />
+    <link rel="icon" type="image/x-icon" href="favicon.ico" />
+    <link rel="stylesheet" href="../assets/fonts/fonts.css" />
+    <link rel="stylesheet" href="../css/style.css" />
+  </head>
+
+  <body
+    class="grid-container"
+    onload="load(new URLSearchParams(window.location.search).get('page'))"
+  >
+    <header class="flex-col">
+      <div class="flex-col">
+        <nav>
+          <div class="navigation-top">
+            <h1 class="logo"><a href="./index.html">QuizMe</a></h1>
+            <div class="navigation-search">
+              <form method="GET" action="/search" class="flex-between">
+                <input
+                  type="search"
+                  placeholder="מה תרצו ללמוד?"
+                  name="q"
+                  autocomplete="off"
+                />
+                <i class="material-icons">search</i>
+              </form>
+            </div>
+
+            <a
+              href="#"
+              id="enter"
+              class="openModal Button Button--Callout enter"
+            >
+              כניסה
+            </a>
+          </div>
+        </nav>
+      </div>
+      <nav class="flex-row">
+        <a href="../index.html">דף הבית</a>
+        <a target="content" href="../pages/about.html">אודות</a>
+        <a target="content" href="../pages/quizzes.html">שאלונים</a>
+        <a target="content" href="../pages/my-quizzes.html" onclick="getMyQuizzes()">השאלונים שלי</a>
+        <a target="content" href="../pages/add-quiz.html">הוספת שאלון</a>
+      </nav>
+    </header>
+    <main>
+      <iframe name="content"></iframe>
+    </main>
+    <!-- <footer class="flex-row flex-center">
+      <p>אבישג מדמון</p>
+      <p>עזרא 30, רחובות</p>
+      <p><a href="mailto:picaboo@gmail.com">picaboo@gmail.com</a></p>
+    </footer> -->
+    <script>
+      function load(page) {
+        const iframe = document.querySelector("iframe");
+        iframe.src = `../pages/${page}.html`;
+      }
+
+      const getMyQuizzes = () => {
+        // window.open(`./my-quizzes.html?id=${userId}`, "_self");
+      };
+    </script>
+  </body>
+</html>
