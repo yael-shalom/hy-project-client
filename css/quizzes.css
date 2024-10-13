@@ -14,12 +14,19 @@ body {
     cursor: pointer;
     color: #d9d5ca;
     border-top: 0.2px solid #386581;
+    left: 50px;
+}
+
+.quiz:hover {
+    background-color: #386581;
 }
 
 #quizzes {
     display: flex;
     flex-direction: column;
     width: 65%;
+    position: relative;
+    top: 20px;
 }
 
 #categories {
@@ -37,4 +44,5 @@ ul {
 
 li {
     margin: 10px;
+    cursor: pointer;
 }

@@ -73,3 +73,7 @@ button:hover {
     background: #f6f4f1;
     color: #295773;
 }
+
+label:hover {
+    cursor: pointer;
+}
