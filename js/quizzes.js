@@ -27,6 +27,8 @@ const getAllCategories = async () => {
     console.log(categories);
     const categoryCon = document.querySelector("#categories");
     let ul = document.createElement("ul");
+    console.log(categories);
+    
     for (const category of categories) {
         let li = document.createElement("li");
         li.textContent = category.name;
