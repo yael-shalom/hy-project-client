@@ -8,6 +8,15 @@
     <link rel="stylesheet" href="./assets/fonts/fonts.css">
     <link rel="stylesheet" href="./css/style.css">
     <title>QuizMe</title>
+    
+    <script>
+        function openAddQuiz() {
+            window.open(`./pages/frame.html?page=add-quiz`, '_self');
+        }
+        function openQuizzes() {
+            window.open(`./pages/frame.html?page=quizzes`, '_self');
+        }
+    </script>
 </head>
 
 <body class="home">
@@ -42,10 +51,10 @@
                     הדרך הטובה ביותר ללמוד למבחן מתחילה כאן
                 </h3>
                 <div class="main-buttons">
-                    <a href="./pages/add-quiz.html" class="Button Button--Light Button--Callout">
+                    <a class="Button Button--Light Button--Callout" onclick="openAddQuiz()">
                         הוסף <i class="material-icons">library_add</i>
                     </a>
-                    <a href="./pages/quizzes.html" class="Button Button--Callout" style="margin: 0;">
+                    <a class="Button Button--Callout" style="margin: 0;" onclick="openQuizzes()">
                         כל השאלונים </a>
                 </div>
             </div>
