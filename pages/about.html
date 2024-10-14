@@ -5,18 +5,52 @@
     <link rel="shortcut icon" href="../assets/images/lg1.png" type="image/x-icon">
     <link rel="stylesheet" href="./assets/fonts/fonts.css">
     <link rel="stylesheet" href="../css/styles.css">
-    <title>QuizMe</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="" rel="stylesheet" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>H & Y</title>
+
+    <script>
+      async function getAllUsers() {
+        try {
+          const res = await fetch("http://localhost:5000/users");
+          const users = await res.json();
+          console.log(users);
+
+          const container = document.querySelector("#container");
+          container.innerHTML = users.map((u) => `<p>${u.name}</p>`).join("");
+        } catch (error) {
+          console.log(error);
+        }
+      }
+      async function login() {
+        try {
+          const res = await fetch("http://localhost:5000/users/login", {
+            method: "POST",
+            body: JSON.parse({ name: "abc" }),
+          });
+          const users = await res.json();
+          console.log(users);
+
+          const container = document.querySelector("#container");
+          container.innerHTML = users.map((u) => `<p>${u.name}</p>`).join("");
+        } catch (error) {
+          console.log(error);
+        }
+      }
+    </script>
 </head>
 
 <body>  
 
+  <button onclick="getAllUsers()">get users</button>
+  <div id="container"></div>
   <header>
     <nav>
         <div class="navigation-top">
-            <h1 class="logo"><a href="./index.html">QuizMe</a></h1>
+            <h1 class="logo"><a href="./index.html"> H & Y </a></h1>
             <div class="navigation-search">
                 <form method="GET" action="/search" class="flex-between">
                     <input type="search" placeholder="מה תרצו ללמוד?" name="q" autocomplete="off">
@@ -42,53 +76,56 @@
   <div class="nav" id="place">
     <nav>
      <ul>
-      <li><a href ="./index.html"> דף הבית </a></li>
-       <li><a href ="./P2.html"> מטיילים בצפון </a></li>
-       <li><a href ="./P3.html"> מטיילים במרכז </a></li>
-       <li><a href ="./P4.html"> מטיילים בדרום </a></li>
-       <li><a href ="./reply.html"> שלח משוב </a></li>
+      <li><a href ="./index.html"> קצת הסטוריה </a></li>
+       <li><a href ="./P2.html"> מאחורי הקלעים </a></li>
+       <li><a href ="./P3.html"> המלצות </a></li>
+       <li><a href ="./P4.html"> שתפו אותנו </a></li>
      </ul>
     </nav>
    </div>
 
   <main>
+
+    <div id="history"></div>
+    <div id="behind"></div>
+    <div id="Recommendations"></div>
+    <div id="Sharing"></div>
+
+
+
+
    <div id="about" class="about">
      <br> <br> <br><br>
      <h2>  ISRAELY </h2>
-     <p>מדינת ישראל שוכנת במזרח התיכון, גובלת בים התיכון במערב, בלבנון בצפון,<br>
-       בסוריה ובירדן במזרח ובמצרים בדרום מערב. למרות ששטחה קטן יחסית, כ-22,072 קמ"ר.</p>
-     <p> הגיאוגרפיה של ישראל מגוונת מאוד, עם הרים, מדבריות, מישורים וחופים.
-      <br>מצפון, הרי הגולן והגליל העליון הם אזורים הרריים המציעים נופי נוף ואתרים היסטוריים.
-       <br>לאורך חוף הים התיכון יש מישורים פוריים, ביניהם מישור החוף ומישור השרון. 
-       <br>ממזרח, בקעת הירדן וים המלח מהווים חלק מהגבול הטבעי בין ישראל לירדן. 
-       <br>לבסוף, מדבר הנגב, המהווה יותר ממחצית משטח הארץ, משתרע על פני דרום ישראל.
+     <p>
       </p>
-    <h2 >קצת על H&T</h2>
-    <p >חברת H&T חברת "תיירים ישראלים" הגדולה בעולם - נוסדה בשנת 1970 <br>
-      ע"מ לתת אפשרות לכל ישראלי להנות ממגוון הנאות שארצנו הקדושה מציעה. <br> 
-      הוגה הרעיון Hodaya יחד עם בעל חברת המימוש - TAMAR הפכו את החלום למציאות. <br>
-       והנה - אתם נהנים מפרי ידייהם.<br> 💕בהנאה💕 </p>
+    <h2 >קצת על H&Y</h2>
+    <p> עוד מימי 1960 היו ידועים בעולם הפרוייקטים ורעיונותיה של חברתנו       
+    </p> 
   </div>
 
   <div id="photo">
     <br>
-    <h2> תמונות מהארץ </h2>
+    <h2> שווה הצצה</h2>
     <div class="pic" >
-      <div class="item1"> <img src="pR/index/p1 (1).jpg" height="200" width="250"class="photo"> </div>
-      <div class="item2"><img src="pR/index/p1 (2).jpg" height="200" width="250" class="photo"></div> 
-      <div class="item3"><img src="pR/index/p1 (3).jpg" height="200" width="250"class="photo"> </div>
-      <div class="item4"><img src="pR/index/p (5).gif" height="200" width="250" class="photo"></div> 
-      <video  class="media" src="pR/index/Israel.mp4"  controls loop autoplay></video></div>
+      <div class="item1"> <img src="../assets/images/1.png" height="200" width="250"class="photo"> </div>
+      <div class="item2"><img src="../assets/images/2.png" height="200" width="250" class="photo"></div> 
+      <div class="item3"><img src="../assets/images/3.png" height="200" width="250"class="photo"> </div>
+      <div class="item4"><img src="../assets/images/4.png" height="200" width="250" class="photo"></div> 
+      <video  class="media" src="../assets/images/5.mp4"  controls loop autoplay></video></div>
    </div>
   
     <div class="share" id="share">
       <h2>מטיילים ממליצים</h2>
       <ul>
-        <li>  אתר מושלם! <br> היינו אובדי עצות. לא ידענו לאיפה כדאי ללכת ועם מי... 
-            <br> ברגע האחרון קיבלנו המלצה להכנס לאתר הזה- והחופש האחרון לא היה יום שלא יצאנו לטיול! 
-            <br><br> אין עליכם H&T !!!  <br><br> אתם אלופים!!! </li><br>
-        <li> כשהחיים עמוסים וצריך קצת אוורור- פנו לh&t והם יתכננו לכם מסלול מדהים  </li><br>
-        <li> מילה שלי- צאו לטייל בחורף---  </li>
+        <li> ידע מדוייק וברור (ד"ר הראל גנוט)</li>
+        <br>
+        <li>  תוכן מעודכן ומפוקח (פרופסור קובי מיה)</li>        
+        <br>
+        <li> התרשמתי מאד מהפתיחות והיוזמה חוצת המגזרים (פרופסור אליעד נחום) </li>
+        <br>
+        <li>  נגיש ואיכות במקום אחד (קים חלולו) </li>
+        <br>
       </ul>
     </div>
   </main>
@@ -157,48 +194,3 @@
  ////////////////////////////////////////////////\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 /////////////////////////////////////////////////\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
-
-
-
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>QuizMe</title>
-
-    <script>
-      async function getAllUsers() {
-        try {
-          const res = await fetch("http://localhost:5000/users");
-          const users = await res.json();
-          console.log(users);
-
-          const container = document.querySelector("#container");
-          container.innerHTML = users.map((u) => `<p>${u.name}</p>`).join("");
-        } catch (error) {
-          console.log(error);
-        }
-      }
-      async function login() {
-        try {
-          const res = await fetch("http://localhost:5000/users/login", {
-            method: "POST",
-            body: JSON.parse({ name: "abc" }),
-          });
-          const users = await res.json();
-          console.log(users);
-
-          const container = document.querySelector("#container");
-          container.innerHTML = users.map((u) => `<p>${u.name}</p>`).join("");
-        } catch (error) {
-          console.log(error);
-        }
-      }
-    </script>
-  </head>
-  <body>
-    <button onclick="getAllUsers()">get users</button>
-    <div id="container"></div>
-  </body>
-</html> 
