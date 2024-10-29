@@ -42,6 +42,8 @@ document.getElementById('quiz-form').addEventListener('submit', function(event) 
     // });
 });
  
+
+
 function addQuestion() {
     const questionsContainer = document.getElementById('questions-container');
     const questionCount = document.querySelectorAll('.question').length + 1;
