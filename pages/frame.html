@@ -4,11 +4,12 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>PICABOO</title>
+    <title>QUIZ US</title>
     <link href="../css/frame.css" rel="stylesheet" />
     <link rel="icon" type="image/x-icon" href="favicon.ico" />
     <link rel="stylesheet" href="../assets/fonts/fonts.css" />
     <link rel="stylesheet" href="../css/style.css" />
+    <script></script>
   </head>
 
   <body
@@ -46,18 +47,18 @@
         <a href="../index.html">דף הבית</a>
         <a target="content" href="../pages/about.html">אודות</a>
         <a target="content" href="../pages/quizzes.html">שאלונים</a>
-        <a target="content" href="../pages/my-quizzes.html" onclick="getMyQuizzes()">השאלונים שלי</a>
+        <a
+          target="content"
+          href="../pages/my-quizzes.html"
+          onclick="getMyQuizzes()"
+          >השאלונים שלי</a
+        >
         <a target="content" href="../pages/add-quiz.html">הוספת שאלון</a>
       </nav>
     </header>
     <main>
       <iframe name="content"></iframe>
     </main>
-    <!-- <footer class="flex-row flex-center">
-      <p>אבישג מדמון</p>
-      <p>עזרא 30, רחובות</p>
-      <p><a href="mailto:picaboo@gmail.com">picaboo@gmail.com</a></p>
-    </footer> -->
     <script>
       function load(page) {
         const iframe = document.querySelector("iframe");

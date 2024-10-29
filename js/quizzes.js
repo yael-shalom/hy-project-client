@@ -7,16 +7,14 @@ const getAllQuizzes = async () => {
         console.log(quizzes);
         const quizzesCon = document.querySelector("#quizzes");
         for (const quiz of quizzes) {
-            if (quiz.isPrivate === false) {
-                let div = document.createElement("div");
-                div.classList.add("quiz");
-                div.dataset.id = quiz._id;
-                div.textContent = quiz.name;
-                div.addEventListener("click", (event) => {
-                    window.open(`./quiz.html?id=${quiz._id}`, '_self');
-                });
-                quizzesCon.append(div);
-            }
+            let div = document.createElement("div");
+            div.classList.add("quiz");
+            div.dataset.id = quiz._id;
+            div.textContent = quiz.name;
+            div.addEventListener("click", (event) => {
+                window.open(`./quiz.html?id=${quiz._id}`, '_self');
+            });
+            quizzesCon.append(div);
         }
     } catch (error) {
         console.log(error);
@@ -44,7 +42,7 @@ const getAllCategories = async () => {
 const getQuizzesByCategory = async (event) => {
     try {
         console.log(event.target.id);
-        
+
         const res = await fetch(`${baseURL}/categories/${event.target.id}`);
         const category = await res.json();
         console.log(category);
@@ -57,7 +55,7 @@ const getQuizzesByCategory = async (event) => {
         }
 
         const quizzesCon = document.querySelector("#quizzes");
-        quizzesCon.innerHTML="";
+        quizzesCon.innerHTML = "";
         for (const quiz of quizzes) {
             if (quiz.isPrivate === false) {
                 let div = document.createElement("div");
