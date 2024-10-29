@@ -1,3 +1,5 @@
+const _baseURL = "http://localhost:5000";
+
 document.getElementById('quiz-form').addEventListener('submit', function(event) {
     event.preventDefault();
 
@@ -83,7 +85,8 @@ document.getElementById('quiz-form').addEventListener('submit', function(event) 
     // קבלת הנתונים מהטופס
     const quizName = document.getElementById('quiz-name').value;
     const creatorName = document.getElementById('creator-name').value;
-    const category = document.getElementById('category').value;
+    // const category = document.getElementById('category').value;
+    const category = "67040d0ffb079b2b61e34a30";
 
     const questions = [];
     document.querySelectorAll('.question').forEach(questionEl => {
@@ -104,11 +107,12 @@ document.getElementById('quiz-form').addEventListener('submit', function(event) 
         name: quizName,
         owner: { name: creatorName },
         categories: category,
-        questions: questions
+        questions: questions,
+        isPrivate: false
     };
 
     // שליחת הנתונים לשרת
-    fetch('/api/quizzes', {
+    fetch(`${_baseURL}/quizzes`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(quiz)
