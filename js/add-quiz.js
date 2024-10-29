@@ -39,7 +39,7 @@ document.getElementById('quiz-form').addEventListener('submit', function(event) 
     //     console.error('Error:', error);
     // });
 });
-
+ 
 function addQuestion() {
     const questionsContainer = document.getElementById('questions-container');
     const questionCount = document.querySelectorAll('.question').length + 1;
@@ -48,7 +48,8 @@ function addQuestion() {
     questionDiv.classList.add('question');
     questionDiv.innerHTML = `
         <h4>Question ${questionCount}</h4>
-        <label>Question Content:</label>
+        <label>Q
+        uestion Content:</label>
         <input type="text" class="question-content" required><br><br>
         <div class="answers-container">
             <h5>Answers</h5>
@@ -74,3 +75,51 @@ function addAnswer(button) {
     answersContainer.appendChild(answerDiv);
 }
     
+
+// האזנה לאירוע של שליחת הטופס
+document.getElementById('quiz-form').addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    // קבלת הנתונים מהטופס
+    const quizName = document.getElementById('quiz-name').value;
+    const creatorName = document.getElementById('creator-name').value;
+    const category = document.getElementById('category').value;
+
+    const questions = [];
+    document.querySelectorAll('.question').forEach(questionEl => {
+        const questionContent = questionEl.querySelector('.question-content').value;
+        const answers = [];
+
+        questionEl.querySelectorAll('.answer').forEach(answerEl => {
+            const answerContent = answerEl.querySelector('.answer-content').value;
+            const isRight = answerEl.querySelector('.is-right').checked;
+            answers.push({ content: answerContent, isRight: isRight });
+        });
+
+        questions.push({ content: questionContent, answers: answers });
+    });
+
+    // בניית אובייקט השאלון
+    const quiz = {
+        name: quizName,
+        owner: { name: creatorName },
+        categories: category,
+        questions: questions
+    };
+
+    // שליחת הנתונים לשרת
+    fetch('/api/quizzes', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(quiz)
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log('Quiz created:', data);
+        alert('Quiz created successfully!');
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        alert('Failed to create quiz.');
+    });
+});
