@@ -23,6 +23,10 @@
         <label for="creator-name">Creator Name:</label>
         <input type="text" id="creator-name" name="creatorName" required><br><br>
 
+        <label for="is-private">פרטי</label>
+        <input type="checkbox" id="is-private" name="isPrivate" onchange="addSpecialCategories(event)"><br><br>
+        
+
         <label for="category">Category:</label>
         <select id="category" name="category">
             <option value="Physics">Physics</option>

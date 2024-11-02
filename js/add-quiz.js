@@ -9,7 +9,7 @@ if (_searchParams.has("id")) {
     fillFieldsForUpdateQuiz();
 }
 
-document.getElementById('quiz-form').addEventListener('submit', function(event) {
+document.getElementById('quiz-form').addEventListener('submit', function (event) {
     event.preventDefault();
 
     const quizName = document.getElementById('quiz-name').value;
@@ -50,7 +50,7 @@ document.getElementById('quiz-form').addEventListener('submit', function(event) 
     //     console.error('Error:', error);
     // });
 });
- 
+
 
 
 function addQuestion() {
@@ -61,14 +61,13 @@ function addQuestion() {
     questionDiv.classList.add('question');
     questionDiv.innerHTML = `
         <h4>Question ${questionCount}</h4>
-        <label>Q
-        uestion Content:</label>
+        <label>Question Content:</label>
         <input type="text" class="question-content" required><br><br>
         <div class="answers-container">
             <h5>Answers</h5>
             <!-- Answers will be dynamically added here -->
         </div>
-        <button type="button" onclick="addAnswer(this)">Add Answer</button><br><br>
+        <button type="button" onclick="addAnswer(this)" class="addAnswerBtn">Add Answer</button>
     `;
     questionsContainer.appendChild(questionDiv);
 }
@@ -87,17 +86,18 @@ function addAnswer(button) {
     `;
     answersContainer.appendChild(answerDiv);
 }
-    
+
 
 // האזנה לאירוע של שליחת הטופס
-document.getElementById('quiz-form').addEventListener('submit', function(event) {
+document.getElementById('quiz-form').addEventListener('submit', function (event) {
     event.preventDefault();
 
     // קבלת הנתונים מהטופס
     const quizName = document.getElementById('quiz-name').value;
+    const isPrivate = document.getElementById('is-private').checked;
     const creatorName = document.getElementById('creator-name').value;
-    // const category = document.getElementById('category').value;
-    const category = "67040d0ffb079b2b61e34a30";
+    const category = document.getElementById('category').value;
+    // const category = "67040d0ffb079b2b61e34a30";
 
     const questions = [];
     document.querySelectorAll('.question').forEach(questionEl => {
@@ -116,10 +116,10 @@ document.getElementById('quiz-form').addEventListener('submit', function(event) 
     // בניית אובייקט השאלון
     const quiz = {
         name: quizName,
-        owner: { name: creatorName },
+        isPrivate: isPrivate,
+        // owner: { _id: "67214cac139ece36cce06f77", name: creatorName },
         categories: category,
-        questions: questions,
-        isPrivate: false
+        questions: questions
     };
 
     // שליחת הנתונים לשרת
@@ -128,15 +128,15 @@ document.getElementById('quiz-form').addEventListener('submit', function(event) 
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(quiz)
     })
-    .then(response => response.json())
-    .then(data => {
-        console.log('Quiz created:', data);
-        alert('Quiz created successfully!');
-    })
-    .catch(error => {
-        console.error('Error:', error);
-        alert('Failed to create quiz.');
-    });
+        .then(response => response.json())
+        .then(data => {
+            console.log('Quiz created:', data);
+            alert('Quiz created successfully!');
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('Failed to create quiz.');
+        });
 });
 
 const load = async () => {
@@ -244,7 +244,7 @@ async function updateQuiz(event) {
         })
         .catch(error => {
             console.error('Error:', error);
-            alert('Failed to create quiz.');
+            alert('Failed to update quiz.');
         });
 }
 
