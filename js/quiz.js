@@ -64,25 +64,25 @@ function calculate(quiz) {
     score = 0;
     scrollToTop()
     header.appendChild(scoreCon);
-    const questions = quiz.questions;    
+    const questions = quiz.questions;
     const inputs = document.querySelectorAll("input");
 
     for (const input of inputs) {
-        input.onclick = ()=>{return false;};//חסימת כפתורי הרדיו שלא יהיו ניתנים לשינוי
+        input.onclick = () => { return false; };//חסימת כפתורי הרדיו שלא יהיו ניתנים לשינוי
         const answerId = input.id;
         const checked = input.checked;
         const questionId = input.name;
         const question = questions.find(q => q._id === questionId);
         const answer = question.answers.find(a => a._id === answerId);
         const isRight = answer.isRight;
-        if (isRight === true && checked === true){
+        if (isRight === true && checked === true) {
             score += quiz.score;
             input.classList.add("right");
         }
-        else{
+        else {
             input.classList.add("wrong");
         }
-        if(isRight === true)
+        if (isRight === true)
             input.parentElement.classList.add("correct");
     }
     showScore(0);
@@ -92,7 +92,7 @@ function showScore(count) {
     scoreCon.textContent = `${count}%`;
     count++;
     if (count <= score) {
-        setTimeout(showScore, 40, count); 
+        setTimeout(showScore, 40, count);
     }
 }
 
@@ -110,4 +110,23 @@ function scrollToTop() {
         window.requestAnimationFrame(scrollToTop);
         window.scrollTo(0, c - c / 8);
     }
+}
+
+updateQuiz();
+
+async function updateQuiz() {
+    const res = await fetch(`${baseURL}/quizzes/${id}`);//חיבור לדטה בייס
+    const quiz = await res.json();//המרת הנתונים לאובייקט
+    console.log(quiz);
+
+    let button = document.createElement("button");
+    button.classList.add("quiz");
+    button.dataset.id = quiz._id;
+    button.textContent = "עדכן שאלון";
+    button.onclick = (event) => {
+        // window.open(`../pages/add-quiz.html`, '_self');
+        window.open(`../pages/add-quiz.html?id=${quiz._id}`, '_self');
+    };
+    const body = document.querySelector("body");
+    body.appendChild(button)
 }
