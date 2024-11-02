@@ -60,7 +60,7 @@ const getQuizById = async (id) => {
 };
 
 
-function calculate(quiz) {
+const calculate = (quiz) => {
     score = 0;
     scrollToTop()
     header.appendChild(scoreCon);
@@ -86,35 +86,33 @@ function calculate(quiz) {
             input.parentElement.classList.add("correct");
     }
     showScore(0);
-}
+};
 
-function showScore(count) {
+const showScore = (count) => {
     scoreCon.textContent = `${count}%`;
     count++;
     if (count <= score) {
         setTimeout(showScore, 40, count);
     }
-}
+};
 
-function shuffleArray(array) {
+const shuffleArray = (array) => {
     for (let i = array.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
         [array[i], array[j]] = [array[j], array[i]];
     }
     return array;
-}
+};
 
-function scrollToTop() {
+const scrollToTop = () => {
     const c = document.documentElement.scrollTop || document.body.scrollTop;
     if (c > 0) {
         window.requestAnimationFrame(scrollToTop);
         window.scrollTo(0, c - c / 8);
     }
-}
+};
 
-updateQuiz();
-
-async function updateQuiz() {
+const updateQuiz = async () => {
     const res = await fetch(`${baseURL}/quizzes/${id}`);//חיבור לדטה בייס
     const quiz = await res.json();//המרת הנתונים לאובייקט
     console.log(quiz);
@@ -129,4 +127,6 @@ async function updateQuiz() {
     };
     const body = document.querySelector("body");
     body.appendChild(button)
-}
+};
+
+updateQuiz();
