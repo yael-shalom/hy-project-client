@@ -14,7 +14,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="" rel="stylesheet" />
 </head>
-<body>
+<body onload="load()">
     <h1>Create a New Quiz</h1>
     <form id="quiz-form">
         <label for="quiz-name">Quiz Name:</label>
@@ -29,11 +29,6 @@
 
         <label for="category">Category:</label>
         <select id="category" name="category">
-            <option value="Physics">Physics</option>
-            <option value="Biology">Biology</option>
-            <option value="Chemistry">Chemistry</option>
-            <option value="Mathematics">Mathematics</option>
-            <option value="Other">Other</option>
         </select><br><br>
 
         <div id="questions-container">
