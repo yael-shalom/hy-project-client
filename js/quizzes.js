@@ -32,7 +32,7 @@ const getAllCategories = async () => {
     for (const category of categories) {
         let li = document.createElement("li");
         li.textContent = category.name;
-        li.id = category._id;
+        li.dataset.id = category._id;
         li.addEventListener("click", getQuizzesByCategory, event);
         ul.append(li);
     }
@@ -41,15 +41,15 @@ const getAllCategories = async () => {
 
 const getQuizzesByCategory = async (event) => {
     try {
-        console.log(event.target.id);
+        console.log(event.target.dataset.id);
 
-        const res = await fetch(`${baseURL}/categories/${event.target.id}`);
+        const res = await fetch(`${baseURL}/categories/${event.target.dataset.id}`);
         const category = await res.json();
         console.log(category);
-        const quizzesIds = category.quizzes;
+        const quizzesObj = category.quizzes;
         const quizzes = [];
-        for (const id of quizzesIds) {
-            const res = await fetch(`${baseURL}/quizzes/${id}`);
+        for (const q of quizzesObj) {
+            const res = await fetch(`${baseURL}/quizzes/${q._id}`);
             const quiz = await res.json();
             quizzes.push(quiz);
         }
