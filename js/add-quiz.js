@@ -38,17 +38,6 @@ document.getElementById('quiz-form').addEventListener('submit', function (event)
     };
 
     console.log(quiz);
-    // Here you would send the quiz object to the server via fetch or another method.
-    // Example:
-    // fetch('/api/quizzes', {
-    //     method: 'POST',
-    //     headers: { 'Content-Type': 'application/json' },
-    //     body: JSON.stringify(quiz)
-    // }).then(response => response.json()).then(data => {
-    //     console.log('Quiz created:', data);
-    // }).catch(error => {
-    //     console.error('Error:', error);
-    // });
 });
 
 
