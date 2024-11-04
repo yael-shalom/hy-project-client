@@ -150,7 +150,7 @@ const load = async () => {
 };
 
 async function fillFieldsForUpdateQuiz() {
-    const res = await fetch(`${baseURL}/quizzes/${_id}`);//חיבור לדטה בייס
+    const res = await fetch(`${_baseURL}/quizzes/${_id}`);//חיבור לדטה בייס
     const quiz = await res.json();//המרת הנתונים לאובייקט
     console.log(quiz);
 
@@ -192,7 +192,7 @@ async function fillFieldsForUpdateQuiz() {
 }
 
 async function updateQuiz(event) {
-    const quizId = event.target.dataset.id;
+    const quizId = _id;
 
     // קבלת הנתונים מהטופס
     const quizName = document.getElementById('quiz-name').value;
