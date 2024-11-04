@@ -595,3 +595,7 @@ header {
 ::-webkit-scrollbar-thumb:hover {
   background: #555 !important;
 }
+
+.hide {
+  display: none;
+}

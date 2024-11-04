@@ -179,9 +179,16 @@ async function fillFieldsForUpdateQuiz() {
         }
     }
 
-    const updateBtn = document.querySelector('.quiz');
+    const addBtn = document.querySelector('#add-quiz');
+    addBtn.classList.add('hide')
 
+    const updateBtn = document.createElement('button');
+    updateBtn.textContent = "עדכן שאלון";
+    updateBtn.classList.add('.quiz');
     updateBtn.onclick = updateQuiz;
+    
+    const body = document.querySelector('body');
+    body.appendChild(updateBtn);
 }
 
 async function updateQuiz(event) {
