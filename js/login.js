@@ -1,3 +1,7 @@
+const baseURL = "http://localhost:5000";
+let token;
+let userName;
+
 document.getElementById('login-form').addEventListener('submit', function(event) {
     event.preventDefault();
 
@@ -5,20 +9,17 @@ document.getElementById('login-form').addEventListener('submit', function(event)
     const password = document.getElementById('password').value;
 
     // שליחת הנתונים לשרת
-    fetch('/api/login', {
+    fetch(`${baseURL}/users/signin`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, password })
     })
     .then(response => response.json())
     .then(data => {
-        if (data.success) {
+            token = data.token;
+            userName = data.username;
             alert('Login successful!');
-            // בצע מעבר לעמוד אחר לאחר התחברות מוצלחת
-            window.location.href = '/dashboard';
-        } else {
-            alert('Login failed: ' + data.message);
-        }
+            window.open('../pages/frame.html?page=quizzes', '_self');
     })
     .catch(error => {
         console.error('Error:', error);
