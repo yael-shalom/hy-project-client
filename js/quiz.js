@@ -129,4 +129,32 @@ const updateQuiz = async () => {
     body.appendChild(button)
 };
 
+const addDeleteBtn = () => {
+    let button = document.createElement("button");
+    button.classList.add("quiz");
+    button.textContent = "מחק שאלון";
+    button.onclick = deleteQuiz;
+    const body = document.querySelector("body");
+    body.appendChild(button)
+}
+
+async function deleteQuiz() {
+    try {
+        const response = await fetch(`${baseURL}/quizzes/${id}`, {
+            method: 'DELETE'
+        });
+
+        if (response.ok) {
+            console.log('Quiz deleted successfully');
+        } else {
+            const data = await response.json();
+            console.error('Error deleting quiz:', data);
+        }
+    } catch (error) {
+        console.error('Error:', error);
+        alert('Failed to delete quiz.');
+    }
+}
+
 updateQuiz();
+addDeleteBtn();
