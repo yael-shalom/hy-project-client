@@ -2,27 +2,38 @@ const baseURL = "http://localhost:5000";
 let token;
 let userName;
 
-document.getElementById('login-form').addEventListener('submit', function(event) {
+document.getElementById('login-form').addEventListener('submit', async (event) => {
     event.preventDefault();
+    try {
+        const email = document.getElementById('email').value;
+        const password = document.getElementById('password').value;
 
-    const email = document.getElementById('email').value;
-    const password = document.getElementById('password').value;
+        // שליחת הנתונים לשרת
+        const response = await fetch(`${baseURL}/users/signin`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ email, password })
+        })
+        console.log(response);
 
-    // שליחת הנתונים לשרת
-    fetch(`${baseURL}/users/signin`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email, password })
-    })
-    .then(response => response.json())
-    .then(data => {
-            token = data.token;
-            userName = data.username;
-            alert('Login successful!');
-            window.open('../pages/frame.html?page=quizzes', '_self');
-    })
-    .catch(error => {
+        const data = await response.json();
+        console.log(data);
+        
+        if (!response.ok)
+            throw new Error(data);
+
+        token = data.token;
+        userName = data.username;
+        localStorage.setItem('token', token);
+        localStorage.setItem('username', userName);
+        alert('Login successful!');
+        window.open('../pages/frame.html?page=quizzes', '_self');
+
+    }
+    catch (error) {
+
         console.error('Error:', error);
         alert('An error occurred. Please try again later.');
-    });
+    }
+
 });
