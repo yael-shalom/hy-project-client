@@ -4,17 +4,21 @@
     padding: 0;
     font-family: Arial, sans-serif;
 }
-
 body {
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background-color: #222831;
+    background-color: #d9d5ca;
+    color: #3b5998;
+    font-family: Rubik, Lato, sans-serif;
+    height: 100vh;
+    margin: 0;
+
 }
 
 .login-container {
-    background-color: #1c1c1c;
+    border: 2px solid #3b5998;
     color: #ffffff;
     padding: 2rem;
     border-radius: 8px;
@@ -115,3 +119,4 @@ button[type="submit"]:hover {
     color: #00aaff;
     text-decoration: none;
 }
+

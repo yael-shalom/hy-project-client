@@ -6,13 +6,14 @@ document.getElementById('login-form').addEventListener('submit', async (event) =
     event.preventDefault();
     try {
         const email = document.getElementById('email').value;
+        const name = document.getElementById('name').value;
         const password = document.getElementById('password').value;
 
         // שליחת הנתונים לשרת
         const response = await fetch(`${baseURL}/users/signin`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ email, password })
+            body: JSON.stringify({ email, name, password })
         })
         console.log(response);
 

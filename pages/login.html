@@ -12,30 +12,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="" rel="stylesheet" />
     <script src="../js/login.js" defer></script>
-    <title>Login</title>
+    <title>LOG IN - UP</title>
 </head> 
 
 <body>
     <div class="login-container">
-        <h2>Log in</h2>
+        <h2>SIGN IN - UP</h2>
         <form id="login-form">
-            <label for="email">Email or username</label>
+            <label for="email">מייל</label>
             <input type="text" id="email" name="email" required>
 
-            <label for="password">Password</label>
+            <label for="name">שם משתמש</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="password">סיסמה</label>
             <input type="password" id="password" name="password" required>
             
             <a href="#" class="forgot-password">Forgot?</a>
-            <button type="submit">Log In</button>
-        </form>
-        <div class="social-login">
-            <span>OR</span>
-            <button class="social-button facebook">Facebook</button>
-            <button class="social-button google">Google</button>
+            <button type="submit" id="signIn">כניסה</button>
+            <button type="submit" id="signUp">הרשמה</button>
+
+        </form>       
         </div>
-        <p class="terms">
-            By signing in, you agree to our <a href="#">Terms</a> and <a href="#">Privacy Policy</a>.
-        </p>
     </div>
 </body>
 </html>
