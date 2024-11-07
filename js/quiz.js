@@ -122,7 +122,6 @@ const updateQuiz = async () => {
     button.dataset.id = quiz._id;
     button.textContent = "עדכן שאלון";
     button.onclick = (event) => {
-        // window.open(`../pages/add-quiz.html`, '_self');
         window.open(`../pages/add-quiz.html?id=${quiz._id}`, '_self');
     };
     const body = document.querySelector("body");
@@ -141,11 +140,14 @@ const addDeleteBtn = () => {
 async function deleteQuiz() {
     try {
         const response = await fetch(`${baseURL}/quizzes/${id}`, {
-            method: 'DELETE'
+            method: 'DELETE',
+            headers: {
+                'Authorization': `Bearer ${localStorage.getItem('token')}`              }
         });
 
         if (response.ok) {
             console.log('Quiz deleted successfully');
+            window.open('../pages/quizzes.html', '_self');
         } else {
             const data = await response.json();
             console.error('Error deleting quiz:', data);
