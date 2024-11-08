@@ -10,17 +10,17 @@ document.getElementById('login-form').addEventListener('submit', async (event) =
         const password = document.getElementById('password').value;
 
         // שליחת הנתונים לשרת
-        const response = await fetch(`${baseURL}/users/signin`, {
+        const res = await fetch(`${baseURL}/users/signin`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ email, name, password })
         })
-        console.log(response);
+        console.log(res);
 
-        const data = await response.json();
+        const data = await res.json();
         console.log(data);
         
-        if (!response.ok)
+        if (!res.ok)
             throw new Error(data);
 
         token = data.token;
