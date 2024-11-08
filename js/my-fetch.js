@@ -1,6 +1,7 @@
-const myFetch = async (url, method = 'GET') => {
+const myFetch = async (url, method = 'GET', headers = {}) => {
     try {
         const res = await fetch(url, {
+            ...headers,
             method,
             headers: {
                 'Authorization': `Bearer ${localStorage.getItem('token')}`
