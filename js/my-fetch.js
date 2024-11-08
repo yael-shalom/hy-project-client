@@ -1,4 +1,4 @@
-const myFetch = async (method, url) => {
+const myFetch = async (url, method = 'GET') => {
     try {
         const res = await fetch(url, {
             method,
