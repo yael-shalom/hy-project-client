@@ -10,9 +10,9 @@ const myFetch = async (url, method = 'GET', options = {}) => {
         const data = await res.json();
 
         if (!res.ok)
-            throw new Error({ status: res.status, message: data.error.message });
+            throw new Error({ ok: res.ok, status: res.status, message: data.error.message });
 
-        return { status: res.statusCode, data };
+        return { ok: res.ok, status: res.status, data };
     } catch (error) {
         throw error;
     }
