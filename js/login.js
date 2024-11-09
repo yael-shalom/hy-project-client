@@ -8,13 +8,17 @@ document.getElementById('login-form').addEventListener('submit', async (event) =
         const email = document.getElementById('email').value;
         const name = document.getElementById('name').value;
         const password = document.getElementById('password').value;
+        let path = event.target.id === 'signIn'? 'signin':'signup';
 
         // שליחת הנתונים לשרת
+        const response = await fetch(`${baseURL}/users/${path}`, {
         const res = await fetch(`${baseURL}/users/signin`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ email, name, password })
         })
+        
+        console.log(response);
         console.log(res);
 
         const data = await res.json();
