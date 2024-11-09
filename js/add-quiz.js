@@ -10,7 +10,7 @@ if (_searchParams.has("id")) {
 }
 
 // האזנה לאירוע של שליחת הטופס
-document.getElementById('quiz-form').addEventListener('submit', function (event) {
+document.getElementById('quiz-form').addEventListener('submit', async function (event) {
     event.preventDefault();
 
     // קבלת הנתונים מהטופס
@@ -40,23 +40,23 @@ document.getElementById('quiz-form').addEventListener('submit', function (event)
         questions: questions
     };
 
-    // שליחת הנתונים לשרת
-    fetch(`${_baseURL}/quizzes`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${localStorage.getItem('token')}`
-         },
-        body: JSON.stringify(quiz)
-    })
-        .then(response => response.json())
-        .then(data => {
-            console.log('Quiz created:', data);
-            alert('Quiz created successfully!');
-        })
-        .catch(error => {
-            console.error('Error:', error);
-            alert('Failed to create quiz.');
+    try {
+        // שליחת הנתונים לשרת
+        const res = await fetch(`${_baseURL}/quizzes`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${localStorage.getItem('token')}`
+            },
+            body: JSON.stringify(quiz)
         });
+        const data = await res.json();
+        console.log('Quiz created:', data);
+        alert('Quiz created successfully!');
+    } catch (error) {
+        console.error('Error:', error);
+        alert('Failed to create quiz.');
+    }
 });
 
 function addQuestion() {
@@ -149,7 +149,7 @@ async function fillFieldsForUpdateQuiz() {
     updateBtn.textContent = "עדכן שאלון";
     updateBtn.classList.add('.quiz');
     updateBtn.onclick = updateQuiz;
-    
+
     const body = document.querySelector('body');
     body.appendChild(updateBtn);
 }
@@ -187,24 +187,24 @@ async function updateQuiz(event) {
 
     console.log(quiz);
 
-
-    // שליחת הנתונים לשרת
-    fetch(`${_baseURL}/quizzes/${quizId}`, {
-        method: 'PATCH',
-        headers: { 'Content-Type': 'application/json',
-            'Authorization': `Bearer ${localStorage.getItem('token')}`
-         },
-        body: JSON.stringify(quiz)
-    })
-        .then(response => response.json())
-        .then(data => {
-            console.log('Quiz updated:', data);
-            alert('Quiz updated successfully!');
-        })
-        .catch(error => {
-            console.error('Error:', error);
-            alert('Failed to update quiz.');
+    try {
+        // שליחת הנתונים לשרת
+        const res = await fetch(`${_baseURL}/quizzes/${quizId}`, {
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${localStorage.getItem('token')}`
+            },
+            body: JSON.stringify(quiz)
         });
+        const data = await res.json();
+
+        console.log('Quiz updated:', data);
+        alert('Quiz updated successfully!');
+    } catch (error) {
+        console.error('Error:', error);
+        alert('Failed to update quiz.');
+    }
 }
 
 function addSpecialCategories(event) {
@@ -219,7 +219,7 @@ function addSpecialCategories(event) {
     }
     else {
         const lastChild = categoriesSelect.lastChild;
-        if(lastChild.value === personalityCategory._id)
+        if (lastChild.value === personalityCategory._id)
             categoriesSelect.removeChild(lastChild);
     }
 }

@@ -1,9 +1,9 @@
 const baseURL = "http://localhost:5000";
 
-const getMyQuizzes = async (id) => {
+const getMyQuizzes = async () => {
     try {
-        const res = await fetch(`${baseURL}/quizzes/owner/${id}`);
-        const quizzes = await res.json();
+        const res = await myFetch(`${baseURL}/quizzes/owner`);
+        const quizzes = res.data;
         console.log(quizzes);
         const quizzesCon = document.querySelector("#quizzes");
         for (const quiz of quizzes) {
@@ -12,7 +12,7 @@ const getMyQuizzes = async (id) => {
             div.dataset.id = quiz._id;
             div.textContent = quiz.name;
             div.addEventListener("click", (event) => {
-                window.open(`./quiz.html?id=${quiz._id}`, "_self");
+                window.open(`./quiz.html?id=${quiz._id}`, '_self');
             });
             quizzesCon.append(div);
         }
@@ -21,6 +21,4 @@ const getMyQuizzes = async (id) => {
     }
 };
 
-onload = () => {
-    getMyQuizzes(new URLSearchParams(window.location.search).get('id'));
-}
+getMyQuizzes();
