@@ -58,7 +58,7 @@ document.getElementById('quiz-form').addEventListener('submit', async function (
         alert('Failed to create quiz.');
     }
 });
-
+ 
 function addQuestion() {
     const questionsContainer = document.getElementById('questions-container');
     const questionCount = document.querySelectorAll('.question').length + 1;
