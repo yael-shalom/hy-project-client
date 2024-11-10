@@ -15,7 +15,12 @@ header.classList.add("flex-row");
 
 const getQuizById = async (id) => {
     try {
-        const res = await fetch(`${baseURL}/quizzes/${id}`);//חיבור לדטה בייס
+        const res = await fetch(`${baseURL}/quizzes/${id}`, {             
+            headers: {
+                'Authorization': `Bearer ${localStorage.getItem('token')}`
+            }
+        });
+
         const quiz = await res.json();//המרת הנתונים לאובייקט
         console.log(quiz);
         const quizData = document.querySelector("#quizData");//מכיל את כל פרטי השאלון
