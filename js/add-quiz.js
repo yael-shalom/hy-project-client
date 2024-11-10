@@ -66,14 +66,13 @@ function addQuestion() {
     const questionDiv = document.createElement('div');
     questionDiv.classList.add('question');
     questionDiv.innerHTML = `
-        <h4>Question ${questionCount}</h4>
-        <label>Question Content:</label>
+        <h4>שאלה ${questionCount}</h4>
+        <label>תוכן השאלה:</label>
         <input type="text" class="question-content" required><br><br>
         <div class="answers-container">
-            <h5>Answers</h5>
-            <!-- Answers will be dynamically added here -->
+            <h5>תשובות</h5>
         </div>
-        <button type="button" onclick="addAnswer(this)" class="addAnswerBtn">Add Answer</button>
+        <button type="button" onclick="addAnswer(this)" class="addAnswerBtn">הוסף תשובה</button>
     `;
     questionsContainer.appendChild(questionDiv);
 }
@@ -85,9 +84,9 @@ function addAnswer(button) {
     const answerDiv = document.createElement('div');
     answerDiv.classList.add('answer');
     answerDiv.innerHTML = `
-        <label>Answer ${answerCount}:</label>
+        <label>תשובה ${answerCount}:</label>
         <input type="text" class="answer-content" required>
-        <label>Is Correct:</label>
+        <label>נכון</label>
         <input type="checkbox" class="is-right"><br><br>
     `;
     answersContainer.appendChild(answerDiv);

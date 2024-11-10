@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="he">
 <head>
@@ -10,29 +9,29 @@
     <link rel="stylesheet" href="../assets/fonts/fonts.css">
     <link rel="stylesheet" href="../css/styles.css">
     <link rel="stylesheet" href="../css/styles.css">
+    <script src="../js/my-fetch.js" defer></script>
     <script src="../js/add-quiz.js" defer></script>
 </head>
 <body onload="load()">
-    <h1>Create a New Quiz</h1>
+    <h1>הוספת שאלון</h1>
     <form id="quiz-form">
-        <label for="quiz-name">Quiz Name:</label>
+        <label for="quiz-name">שם שאלון:</label>
         <input type="text" id="quiz-name" name="quizName" required><br><br>
 
         <label for="is-private">פרטי</label>
         <input type="checkbox" id="is-private" name="isPrivate" onchange="addSpecialCategories(event)"><br><br>
         
 
-        <label for="category">Category:</label>
+        <label for="category">קטגוריה</label>
         <select id="category" name="category">
         </select><br><br>
 
         <div id="questions-container">
-            <h3>Questions</h3>
-            <!-- Questions will be dynamically added here -->
+            <h3>שאלות</h3>
         </div>
 
-        <button type="button" onclick="addQuestion()">Add Question</button><br><br>
-        <button type="submit" id="add-quiz">Submit Quiz</button>
+        <button type="button" onclick="addQuestion()">הוסף שאלה</button><br><br>
+        <button type="submit" id="add-quiz">הוסף שאלון</button>
     </form>
 </body>
 </html>
