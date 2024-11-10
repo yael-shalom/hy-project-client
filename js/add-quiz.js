@@ -72,14 +72,14 @@ function addQuestion() {
         <div class="answers-container">
             <h5>תשובות</h5>
         </div>
-        <button type="button" onclick="addAnswer(this)" class="addAnswerBtn">הוסף תשובה</button>
+        <button type="button" onclick="addAnswer(this, ${questionCount})" class="addAnswerBtn">הוסף תשובה</button>
     `;
     questionsContainer.appendChild(questionDiv);
 }
 
-function addAnswer(button) {
+function addAnswer(button, questionCount) {
     const answersContainer = button.parentElement.querySelector('.answers-container');
-    const answerCount = answersContainer.querySelectorAll('.answer').length + 1;
+    let answerCount = answersContainer.querySelectorAll('.answer').length + 1;
 
     const answerDiv = document.createElement('div');
     answerDiv.classList.add('answer');
@@ -87,7 +87,7 @@ function addAnswer(button) {
         <label>תשובה ${answerCount}:</label>
         <input type="text" class="answer-content" required>
         <label>נכון</label>
-        <input type="checkbox" class="is-right"><br><br>
+        <input type="radio" class="is-right" name="question${questionCount}"><br><br>
     `;
     answersContainer.appendChild(answerDiv);
 }
@@ -132,7 +132,7 @@ async function fillFieldsForUpdateQuiz() {
         questionInput.value = question.content;
         for (const answer of question.answers) {
             const addAnswerBtn = questionCon.querySelector('.addAnswerBtn')
-            addAnswer(addAnswerBtn);
+            addAnswer(addAnswerBtn, questionCount);
             const answerCon = questionCon.querySelector('.answer:last-child');
             const isChecked = answerCon.querySelector('.is-right');
             isChecked.checked = answer.isRight;
