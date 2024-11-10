@@ -15,6 +15,9 @@ body {
     color: #d9d5ca;
     border-top: 0.2px solid #386581;
     left: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .quiz:hover {
