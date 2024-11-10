@@ -9,6 +9,8 @@ const getMyQuizzes = async () => {
         for (const quiz of quizzes) {
             let div = document.createElement("div");
             div.classList.add("quiz");
+            if(quiz.isPrivate)
+                div.classList.add("private");
             div.dataset.id = quiz._id;
             div.textContent = quiz.name;
             div.addEventListener("click", (event) => {

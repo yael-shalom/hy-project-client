@@ -24,6 +24,10 @@ body {
     background-color: #386581;
 }
 
+.quiz.private {
+    background-color: #555;
+}
+
 #quizzes {
     display: flex;
     flex-direction: column;
