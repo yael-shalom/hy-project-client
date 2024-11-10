@@ -1,4 +1,3 @@
-
 const searchParams = new URLSearchParams(location.search);
 console.log(searchParams.get("id"));
 const id = searchParams.get("id");
@@ -64,7 +63,6 @@ const getQuizById = async (id) => {
     }
 };
 
-
 const calculate = (quiz) => {
     score = 0;
     scrollToTop()
@@ -91,6 +89,7 @@ const calculate = (quiz) => {
             input.parentElement.classList.add("correct");
     }
     showScore(0);
+    // updateUserAfterQuiz(score, quiz.owner._id);
 };
 
 const showScore = (count) => {
@@ -102,7 +101,7 @@ const showScore = (count) => {
 };
 
 const shuffleArray = (array) => {
-    for (let i = array.length - 1; i > 0; i--) {
+    for (let i = array?.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
         [array[i], array[j]] = [array[j], array[i]];
     }
@@ -121,7 +120,7 @@ const updateQuiz = async () => {
     const res = await fetch(`${baseURL}/quizzes/${id}`);//חיבור לדטה בייס
     const quiz = await res.json();//המרת הנתונים לאובייקט
     console.log(quiz);
-
+    // if (quiz.isOwner) {
     let button = document.createElement("button");
     button.classList.add("quiz");
     button.dataset.id = quiz._id;
@@ -131,30 +130,36 @@ const updateQuiz = async () => {
     };
     const body = document.querySelector("body");
     body.appendChild(button)
+    // }
 };
 
-const addDeleteBtn = () => {
+const addDeleteBtn = async () => {
+    const res = await fetch(`${baseURL}/quizzes/${id}`);//חיבור לדטה בייס
+    const quiz = await res.json();//המרת הנתונים לאובייקט
+    // if (quiz.isOwner) {
     let button = document.createElement("button");
     button.classList.add("quiz");
     button.textContent = "מחק שאלון";
     button.onclick = deleteQuiz;
     const body = document.querySelector("body");
     body.appendChild(button)
+    // }
 }
 
 async function deleteQuiz() {
     try {
-        const response = await fetch(`${baseURL}/quizzes/${id}`, {
+        const res = await fetch(`${baseURL}/quizzes/${id}`, {
             method: 'DELETE',
             headers: {
-                'Authorization': `Bearer ${localStorage.getItem('token')}`              }
+                'Authorization': `Bearer ${localStorage.getItem('token')}`
+            }
         });
 
-        if (response.ok) {
+        if (res.ok) {
             console.log('Quiz deleted successfully');
             window.open('../pages/quizzes.html', '_self');
         } else {
-            const data = await response.json();
+            const data = await res.json();
             console.error('Error deleting quiz:', data);
         }
     } catch (error) {
