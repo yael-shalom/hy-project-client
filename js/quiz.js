@@ -14,13 +14,8 @@ header.classList.add("flex-row");
 
 const getQuizById = async (id) => {
     try {
-        const res = await fetch(`${baseURL}/quizzes/${id}`, {             
-            headers: {
-                'Authorization': `Bearer ${localStorage.getItem('token')}`
-            }
-        });
-
-        const quiz = await res.json();//המרת הנתונים לאובייקט
+        const res = await myFetch(`${baseURL}/quizzes/${id}`, 'GET');
+        const quiz = res.data;//המרת הנתונים לאובייקט
         console.log(quiz);
         const quizData = document.querySelector("#quizData");//מכיל את כל פרטי השאלון
         let h1 = document.createElement("h1");
@@ -89,7 +84,7 @@ const calculate = (quiz) => {
             input.parentElement.classList.add("correct");
     }
     showScore(0);
-    // updateUserAfterQuiz(score, quiz.owner._id);
+    // updateUserAfterQuiz(quiz.owner._id);
 };
 
 const showScore = (count) => {
@@ -117,8 +112,8 @@ const scrollToTop = () => {
 };
 
 const updateQuiz = async () => {
-    const res = await fetch(`${baseURL}/quizzes/${id}`);//חיבור לדטה בייס
-    const quiz = await res.json();//המרת הנתונים לאובייקט
+    const res = await myFetch(`${baseURL}/quizzes/${id}`, 'GET');//חיבור לדטה בייס
+    const quiz = res.data;//המרת הנתונים לאובייקט
     console.log(quiz);
     // if (quiz.isOwner) {
     let button = document.createElement("button");
@@ -134,8 +129,8 @@ const updateQuiz = async () => {
 };
 
 const addDeleteBtn = async () => {
-    const res = await fetch(`${baseURL}/quizzes/${id}`);//חיבור לדטה בייס
-    const quiz = await res.json();//המרת הנתונים לאובייקט
+    const res = await myFetch(`${baseURL}/quizzes/${id}`, 'GET');
+    const quiz = res.data;//המרת הנתונים לאובייקט
     // if (quiz.isOwner) {
     let button = document.createElement("button");
     button.classList.add("quiz");
@@ -148,19 +143,13 @@ const addDeleteBtn = async () => {
 
 async function deleteQuiz() {
     try {
-        const res = await fetch(`${baseURL}/quizzes/${id}`, {
-            method: 'DELETE',
-            headers: {
-                'Authorization': `Bearer ${localStorage.getItem('token')}`
-            }
-        });
+        const res = await myFetch(`${baseURL}/quizzes/${id}`, 'DELETE');
 
         if (res.ok) {
             console.log('Quiz deleted successfully');
             window.open('../pages/quizzes.html', '_self');
         } else {
-            const data = await res.json();
-            console.error('Error deleting quiz:', data);
+            console.error('Error deleting quiz');
         }
     } catch (error) {
         console.error('Error:', error);
@@ -169,14 +158,14 @@ async function deleteQuiz() {
 }
 
 // async function updateUserAfterQuiz(score, userId) {
+//     const res = await fetch(`${baseURL}/users/${userId}`);
+//     const currentUser = await res.json();
+
 //     const user = {
-//         _id: userId,
-//         score
+//         _id: userId
 //     };
 
-//     try {
-//         const response = await myFetch(`${baseURL}/users/${userId}`);
-        
+//     try {        
 //         // שליחת הנתונים לשרת
 //         const res = await myFetch(`${baseURL}/users/${userId}`, 'PATCH',
 //             {

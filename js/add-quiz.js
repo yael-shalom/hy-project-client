@@ -119,8 +119,8 @@ function addAnswer(button, questionCount) {
 
 const load = async () => {
     try {
-        const res = await fetch(`${_baseURL}/categories`);
-        let categories = await res.json();
+        const res = await myFetch(`${_baseURL}/categories`, 'GET');
+        let categories = res.data;
         personalityCategory = categories.find(c => c.name == "אישיות");
         console.log(personalityCategory);
         categories = categories.filter(category => category._id !== personalityCategory._id);
@@ -139,8 +139,8 @@ const load = async () => {
 };
 
 async function fillFieldsForUpdateQuiz() {
-    const res = await fetch(`${_baseURL}/quizzes/${_id}`);//חיבור לדטה בייס
-    const quiz = await res.json();//המרת הנתונים לאובייקט
+    const res = await myFetch(`${_baseURL}/quizzes/${_id}`, 'GET');
+    const quiz = res.data;//המרת הנתונים לאובייקט
     console.log(quiz);
 
     const quizName = document.querySelector('#quiz-name');
@@ -215,15 +215,13 @@ async function updateQuiz(event) {
 
     try {
         // שליחת הנתונים לשרת
-        const res = await fetch(`${_baseURL}/quizzes/${quizId}`, {
-            method: 'PATCH',
+        const res = await myFetch(`${_baseURL}/quizzes/${quizId}`, 'PATCH', {
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': `Bearer ${localStorage.getItem('token')}`
             },
             body: JSON.stringify(quiz)
         });
-        const data = await res.json();
+        const data = res.data;
 
         console.log('Quiz updated:', data);
         alert('Quiz updated successfully!');

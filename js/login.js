@@ -11,15 +11,14 @@ document.getElementById('login-form').addEventListener('submit', async (event) =
         let path = event.submitter.id === 'signIn'? 'signin':'signup';
 
         // שליחת הנתונים לשרת
-        const res = await fetch(`${baseURL}/users/${path}`, {
-            method: 'POST',
+        const res = await myFetch(`${baseURL}/users/${path}`, 'POST',{
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ email, name, password })
         })
         
         console.log(res);
 
-        const data = await res.json();
+        const data = res.data;
         console.log(data);
         
         if (!res.ok)

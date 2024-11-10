@@ -2,8 +2,8 @@ const baseURL = "http://localhost:5000";
 
 const getAllQuizzes = async () => {
     try {
-        const res = await fetch(`${baseURL}/quizzes`);
-        const quizzes = await res.json();
+        const res = await myFetch(`${baseURL}/quizzes`, 'GET');
+        const quizzes = res.data;
         console.log(quizzes);
         const quizzesCon = document.querySelector("#quizzes");
         for (const quiz of quizzes) {
@@ -22,8 +22,8 @@ const getAllQuizzes = async () => {
 };
 
 const getAllCategories = async () => {
-    const res = await fetch(`${baseURL}/categories`);
-    const categories = await res.json();
+    const res = await myFetch(`${baseURL}/categories`, 'GET');
+    const categories = res.data;
     console.log(categories);
     const categoryCon = document.querySelector("#categories");
     let ul = document.createElement("ul");
@@ -43,14 +43,14 @@ const getQuizzesByCategory = async (event) => {
     try {
         console.log(event.target.dataset.id);
 
-        const res = await fetch(`${baseURL}/categories/${event.target.dataset.id}`);
-        const category = await res.json();
+        const res = await myFetch(`${baseURL}/categories/${event.target.dataset.id}`, 'GET');
+        const category = res.data;
         console.log(category);
         const quizzesObj = category.quizzes;
         const quizzes = [];
         for (const q of quizzesObj) {
-            const res = await fetch(`${baseURL}/quizzes/${q._id}`);
-            const quiz = await res.json();
+            const res = await myFetch(`${baseURL}/quizzes/${q._id}`, 'GET');
+            const quiz = res.data;
             quizzes.push(quiz);
         }
 
