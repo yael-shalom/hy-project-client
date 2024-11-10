@@ -42,15 +42,11 @@ document.getElementById('quiz-form').addEventListener('submit', async function (
 
     try {
         // שליחת הנתונים לשרת
-        const res = await fetch(`${_baseURL}/quizzes`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${localStorage.getItem('token')}`
-            },
+        const res = await myFetch(`${_baseURL}/quizzes`, 'POST', {
+            headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(quiz)
         });
-        const data = await res.json();
+        const data = res.data;
         console.log('Quiz created:', data);
         alert('Quiz created successfully!');
     } catch (error) {
@@ -58,7 +54,7 @@ document.getElementById('quiz-form').addEventListener('submit', async function (
         alert('Failed to create quiz.');
     }
 });
- 
+
 function addQuestion() {
     const questionsContainer = document.getElementById('questions-container');
     const questionCount = document.querySelectorAll('.question').length + 1;
