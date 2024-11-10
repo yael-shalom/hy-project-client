@@ -158,5 +158,33 @@ async function deleteQuiz() {
     }
 }
 
-updateQuiz();
-addDeleteBtn();
+// async function updateUserAfterQuiz(score, userId) {
+//     const user = {
+//         _id: userId,
+//         score
+//     };
+
+//     try {
+//         const response = await myFetch(`${baseURL}/users/${userId}`);
+        
+//         // שליחת הנתונים לשרת
+//         const res = await myFetch(`${baseURL}/users/${userId}`, 'PATCH',
+//             {
+//                 headers: { 'Content-Type': 'application/json', },
+//                 body: JSON.stringify(user)
+//             });
+//         const data = res.data;
+
+//         console.log('user updated:', data);
+//         alert('user updated successfully!');
+//     } catch (error) {
+//         console.error('Error:', error);
+//         alert('Failed to update user.');
+//     }
+// }
+
+onload = () => {
+    getQuizById(searchParams.get('id'));
+    updateQuiz();
+    addDeleteBtn();
+}
