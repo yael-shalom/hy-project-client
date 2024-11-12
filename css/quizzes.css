@@ -9,7 +9,7 @@ body {
 
 .quiz {
     height: 100px;
-    background-color: #295773;
+    background-color: #628da8;
     position: relative;
     text-align: center;
     cursor: pointer;
@@ -22,7 +22,8 @@ body {
 }
 
 .quiz:hover {
-    background-color: #386581;
+    background-color: #ca6f72eb;
+    border: ;
 }
 
 .quiz.private {
