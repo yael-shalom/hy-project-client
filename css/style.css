@@ -27,15 +27,6 @@ button:hover {
     background-color: var(--button-color--);
 }
 
-.image-home-page {
-    background-image: url('../assets/images/image\ \(10\).png') !important;
-    background-repeat: no-repeat;
-    background-size: auto 80vh;
-    height: 80vh;
-}
-
-
-
 .navigation-top {
     display: flex;
     align-items: center;
@@ -160,7 +151,7 @@ input[type=search]+i {
 
 .home .Banner {
     padding: 75px 100px 95px;
-    background: url('../assets/images/Brainstorming.jpg') 0 104% no-repeat;
+    background: url('../assets/images/Brainstorming1.jpg') 0 104% no-repeat;
     position: absolute;
     background-size: contain;
 }
