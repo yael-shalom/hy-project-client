@@ -2,6 +2,11 @@
     box-sizing: border-box;
 }
 
+header{
+    background-color: #abced2;
+    top: 0%;
+}
+
 .flex-col {
     width: 100%;
     display: flex;
@@ -29,6 +34,12 @@ nav {
     flex-grow: 1;
     height: 0;
     border-bottom: 0.1px solid #386581;
+    width: 80%;
+}
+
+nav.flex-row.flex-between {
+    
+    justify-content: space-around;
 }
 
 header {
@@ -42,7 +53,7 @@ input[type=search]+i {
     position: absolute;
     left: 24%;
     font-weight: 700;
-    color: #5a6779;
+    color: #b42529eb;
 }
 
 input[type=search] {
@@ -62,18 +73,22 @@ input {
     font: inherit;
     margin: 0;
     line-height: normal;
-    color: #3c3e42;
+    color: #b42529eb;
     outline: none;
 }
 
 a {
     text-decoration: none;
     color: var(--main-color);
+    color: #b42529eb;
+    font-size: 150%;
+
 }
 
 nav a:hover {
     background-color: var(--main-color);
-    color: red;
+    color: #c3b6ae
+
 }
 
 button {
