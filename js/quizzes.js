@@ -119,6 +119,10 @@ function handleLogout() {
     localStorage.removeItem('username');
     profileWindow.style.display = 'none'; // לסגור את החלונית לאחר הפעולה
 }
+
+function cancel() {
+    profileWindow.style.display = 'none';
+}
 //#endregion
 
 onload = ()=>{

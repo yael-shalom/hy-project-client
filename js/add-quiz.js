@@ -292,6 +292,10 @@ function handleLogout() {
     profileWindow.style.display = 'none'; // לסגור את החלונית לאחר הפעולה
 }
 
+function cancel() {
+    profileWindow.style.display = 'none';
+}
+
 onload = async() => {
     try {
         const res = await myFetch(`${_baseURL}/categories`, 'GET');
