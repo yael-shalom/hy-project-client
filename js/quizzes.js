@@ -1,5 +1,13 @@
 const baseURL = "http://localhost:5000";
 
+
+const searchParams = new URLSearchParams(location.search);
+console.log(searchParams.get("type"));
+const id = searchParams.get("type");
+
+  
+
+
 const getAllQuizzes = async () => {
     try {
         const res = await fetch(`${baseURL}/quizzes`);
@@ -72,3 +80,29 @@ const getQuizzesByCategory = async (event) => {
         console.log(error);
     }
 };
+
+
+const getMyQuizzes = async () => {
+    try {
+        const res = await myFetch(`${baseURL}/quizzes/owner`);
+        const quizzes = res.data;
+        console.log(quizzes);
+        const quizzesCon = document.querySelector("#quizzes");
+        for (const quiz of quizzes) {
+            let div = document.createElement("div");
+            div.classList.add("quiz");
+            div.dataset.id = quiz._id;
+            div.textContent = quiz.name;
+            div.addEventListener("click", (event) => {
+                window.open(`./quiz.html?id=${quiz._id}`, '_self');
+            });
+            quizzesCon.append(div);
+        }
+    } catch (error) {
+        console.log(error);
+    }
+};
+
+onload=()=>{
+    i
+}
