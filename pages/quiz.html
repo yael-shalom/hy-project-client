@@ -18,7 +18,7 @@
     <div class="flex-row flex-between align-center">
       <h1 class="logo"><a href="./index.html">BRAINSTORMING</a></h1>
       <div class="navigation-search">
-        <form action="/search" class="flex-between">
+        <form action="../pages/quizzes.html" class="flex-between">
           <input type="search" placeholder="מה תרצו ללמוד?" name="quizSearch" autocomplete="off" />
           <i class="search-icon">search</i>
         </form>
@@ -38,8 +38,8 @@
     <nav class="flex-row flex-between">
       <a href="../index.html">דף הבית</a>
       <a href="../pages/about.html">אודות</a>
-      <a href="../pages/quizzes.html">שאלונים</a>
-      <a href="../pages/my-quizzes.html" onclick="getMyQuizzes()">השאלונים שלי</a>
+      <a href="../pages/quizzes.html?isMy=false">שאלונים</a>
+      <a href="../pages/quizzes.html?isMy=true" onclick="getMyQuizzes()">השאלונים שלי</a>
       <a href="../pages/add-quiz.html">הוספת שאלון</a>
     </nav>
   </header>

@@ -1,7 +1,7 @@
 const baseURL = "http://localhost:5000";
 
 function openQuizzes() {
-    window.open('../pages/quizzes.html', '_self');
+    window.open('../pages/quizzes.html?isMy=false', '_self');
 }
 if (!localStorage.getItem('isLogin')) {
     localStorage.setItem('isLogin', false);

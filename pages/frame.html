@@ -22,7 +22,7 @@
           <div class="navigation-top">
             <h1 class="logo"><a href="./index.html">QuizMe</a></h1>
             <div class="navigation-search">
-              <form method="GET" action="/search" class="flex-between">
+              <form method="GET" action="../pages/quizzes.html" class="flex-between">
                 <input
                   type="search"
                   placeholder="מה תרצו ללמוד?"
@@ -47,10 +47,10 @@
       <nav class="flex-row">
         <a href="../index.html">דף הבית</a>
         <a target="content" href="../pages/about.html">אודות</a>
-        <a target="content" href="../pages/quizzes.html">שאלונים</a>
+        <a target="content" href="../pages/quizzes.html?isMy=false">שאלונים</a>
         <a
           target="content"
-          href="../pages/my-quizzes.html"
+          href="../pages/quizzes.html?isMy=true"
           onclick="getMyQuizzes()"
           >השאלונים שלי</a
         >
