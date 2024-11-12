@@ -33,6 +33,7 @@ header {
     width: 100vw;
     position: fixed;
     z-index: 1000;
+    height: 120px !important;
 }
 
 input[type=search]+i {
@@ -79,6 +80,10 @@ button {
 
 .align-center {
     align-items: center;
+}
+
+.flex-row.flex-between.align-center{
+    padding: 10px;
 }
 
 .profile {
