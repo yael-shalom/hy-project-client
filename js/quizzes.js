@@ -1,5 +1,13 @@
 const baseURL = "http://localhost:5000";
 
+
+const searchParams = new URLSearchParams(location.search);
+console.log(searchParams.get("type"));
+const id = searchParams.get("type");
+
+  
+
+
 const getAllQuizzes = async () => {
     try {
         const res = await myFetch(`${baseURL}/quizzes`, 'GET');

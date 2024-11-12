@@ -1,9 +1,7 @@
 const searchParams = new URLSearchParams(location.search);
 console.log(searchParams.get("id"));
 const id = searchParams.get("id");
-
 const baseURL = "http://localhost:5000";
-
 const container = document.createElement("div");//מכיל את כל השאלות/תשובות
 container.classList.add("flex-col");
 const scoreCon = document.createElement("h1");
