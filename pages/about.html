@@ -10,6 +10,7 @@
   <link href="../css/about.css" rel="stylesheet" />
   <link href="../css/header.css" rel="stylesheet" />
   <link href="../css/style.css" rel="stylesheet" />
+  <link href="../css/about.css" rel="stylesheet" />
   <script src="../js/about.js"></script>
   <script src="../js/my-fetch.js"></script>
   <meta charset="UTF-8" />
@@ -19,36 +20,87 @@
 
 <body>
   <header class="flex-col">
-      <div class="flex-row flex-between align-center">
-        <h1 class="logo"><a href="./index.html">BRAINSTORMING</a></h1>
-        <div class="navigation-search">
-          <form action="/search" class="flex-between">
-            <input type="search" placeholder="מה תרצו ללמוד?" name="quizSearch" autocomplete="off" />
-            <i class="search-icon">search</i>
-          </form>
-        </div>
-  
-        <button id="enter" class="dark-btn" onclick="">
-          כניסה
-        </button>
-        <!-- //////////////////////////////////////////////////////////////////////////////////////////////// -->
-        <div id="profileWindow" class="profile-window">
-          <div id="removeBtn" onclick="handleRemove()">הסרה</div>
-          <div id="logoutBtn" onclick="handleLogout()">התנתקות</div>
-          <div id="cancelBtn" onclick="cancel()">ביטול</div>
-        </div>
-        <!-- //////////////////////////////////////////////////////////////////////////////////////////////// -->
+    <div class="flex-row flex-between align-center">
+      <h1 class="logo"><a href="./index.html">BRAINSTORMING</a></h1>
+      <div class="navigation-search">
+        <form action="/search" class="flex-between">
+          <input type="search" placeholder="מה תרצו ללמוד?" name="quizSearch" autocomplete="off" />
+          <i class="search-icon">search</i>
+        </form>
       </div>
-      <nav class="flex-row flex-between">
-        <a href="../index.html">דף הבית</a>
-        <a href="../pages/about.html">אודות</a>
-        <a href="../pages/quizzes.html">שאלונים</a>
-        <a href="../pages/my-quizzes.html" onclick="getMyQuizzes()">השאלונים שלי</a>
-        <a href="../pages/add-quiz.html">הוספת שאלון</a>
-      </nav>
-    </header>
 
-  <div id="container"></div>
+      <button id="enter" class="dark-btn" onclick="">
+        כניסה
+      </button>
+      <!-- //////////////////////////////////////////////////////////////////////////////////////////////// -->
+      <div id="profileWindow" class="profile-window">
+        <div id="removeBtn" onclick="handleRemove()">הסרה</div>
+        <div id="logoutBtn" onclick="handleLogout()">התנתקות</div>
+        <div id="cancelBtn" onclick="cancel()">ביטול</div>
+      </div>
+      <!-- //////////////////////////////////////////////////////////////////////////////////////////////// -->
+    </div>
+    <nav class="flex-row flex-between">
+      <a href="../index.html">דף הבית</a>
+      <a href="../pages/about.html">אודות</a>
+      <a href="../pages/quizzes.html">שאלונים</a>
+      <a href="../pages/my-quizzes.html" onclick="getMyQuizzes()">השאלונים שלי</a>
+      <a href="../pages/add-quiz.html">הוספת שאלון</a>
+    </nav>
+  </header>
+
+  <div id="aboutour">
+    <h2> אודותינו</h2>
+
+    <p>
+      יזמות BRAINSTORMING הוקמה ע"י HODAYA & YAEL במטרה לתת מענה לרצון פיתוח החשיבה והאינטלגנציה הרווחת בקרב הסטודנטים
+      קהילת האקדמאים והסטודנטים.
+      הרצון העז לסייע לביקוש הרחב הוא שדחף את היוזמה – עד לביצוע מעשי.
+      הדגש הניתן על בטיחות ונכונות הנתונים – קריטי כשמדובר בתחומים מהותיים כ"כ ועל כך עינינו פקוחות תמיד.
+    </p>
+
+
+    <h2> התאמה אישית</h2>
+
+    <p>
+      אתגרי BRAINSTORMING מבוססים על ידע שיתופי של אלפי סטודנטים ומרצים בישראל ממגוון מוסדות; בן גוריון, הטכניון,
+      הפתוחה, העברית, רייכמן, בר אילן ועוד. כל משתמש יכול לשתף מבחנים בקלות ובמהירות ולתרום למאגר המקיף ביותר לאקדמאים.
+      בנוסף, BRAINSTORMING מאפשר להוסיף שאלון מותאם אישית לכל נושא העולה ברוחכם, לפי תחום הנוגע אליכם או ספציפי לצורך
+      זמני.
+
+    </p>
+
+
+    <h2> אנחנו רוצים אותך</h2>
+
+    <p>
+      BRAINSTORMING-PARTNER יוצאת לדרך. האתר מרחיב את פעילותו ומחפש אקדמאים מוכשרים שיוכלו להעביר הרצאות מוקלטות במגוון
+      נושאים.
+      חושבים שאתם מומחים?
+      אוהבים להסביר לאנשים אחרים?
+      יש לכם ניסיון כמתרגלים?
+      בואו לעזור לסטודנטים ועל הדרך לעשות מזה כסף. בעזרת BRAINSTORMING-PARTNER תוכלו להקים קורס אינטרנטי משלכם שיכול
+      להניב עבורכם הכנסה נוספת באופן פסיבי. כל נושא יכול להתאים - החל מביולוגיה, פיזיקה, כימיה, אסטרונומיה ועד אלגברה
+      סטטיסטיקה ואפילו פילוסופיה.
+
+    </p>
+
+    <h2> איך זה עובד?</h2>
+
+    <p> צרו איתנו קשר במייל BRAINSTORMING@GMAIL.COM ספרו לנו באיזה נושא אתם רוצים להרצות ומה הרקע שלכם בנושא; השאירו לנו
+      טלפון ונחזור אליכם עם הפרטים.
+      מכירים מישהו שיכול להתאים? מעולה, תפנו אותו אלינו. תוכנית השותפים שלנו פתוחה לכולם, דורשת ידע מעמיק ויכולת הסברה
+      טובה.
+
+    </p>
+
+    <h3>מחכים לכם – צוות BRAINSTORMING  </h3>
+
+  </div>
+
+  <!-- <div id="container"> -->
+
+
 </body>
 
 </html>
