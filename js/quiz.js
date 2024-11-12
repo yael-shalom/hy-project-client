@@ -230,15 +230,22 @@ onload = () => {
     getQuizById(searchParams.get('id'));
     updateQuiz();
     addDeleteBtn();
-    if(JSON.parse(localStorage.getItem('isLogin')) == true)
-    {
+    if (JSON.parse(localStorage.getItem('isLogin')) == true) {
         const btn = document.querySelector('#enter');
         btn.textContent = "";
         btn.classList.add('profile');
-        btn.style.backgroundImage = "url(localStorage.getItem('userImage'))";
-        const img = document.createElement("img");
-        img.src = localStorage.getItem('userImage');
-        img.classList.add('profile')
-        btn.appendChild(img)
+        if (localStorage.getItem('userImage') !== 'undefined') {
+            const img = document.createElement("img");
+            img.src = localStorage.getItem('userImage');
+            img.classList.add('profile')
+            btn.appendChild(img)
+        }
+        else {
+            btn.style.backgroundColor = "#b4292e";
+            btn.style.color = "white";
+            btn.textContent = localStorage.getItem('username').slice(0, 1);
+        }
+        btn.onclick = openProfileWindow;
     }
 }
+//#endregion
