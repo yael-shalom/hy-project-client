@@ -7,32 +7,10 @@
     <link rel="shortcut icon" href="./assets/images/lg1.png" type="image/x-icon">
     <link rel="stylesheet" href="./assets/fonts/fonts.css">
     <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/quizzes.css">
+    <script src="./js/my-fetch.js" defer></script>
+    <script src="./js/index.js" defer></script>
     <title>QuizMe</title>
-
-    <script>
-        function openAddQuiz() {
-            window.open(`./pages/frame.html?page=add-quiz`, '_self');
-        }
-        function openQuizzes() {
-            window.open(`./pages/frame.html?page=quizzes`, '_self');
-        }
-        if (!localStorage.getItem('isLogin')) {
-            localStorage.setItem('isLogin', false);
-        }
-
-        // הגדרת זמן ההמתנה למחיקה במילישניות (3 שעות)
-        const timeToWaitInMilliseconds = 3 * 60 * 60 * 1000;
-
-        // המחיקה שתתבצע לאחר זמן ההמתנה
-        setTimeout(() => {
-            localStorage.setItem('isLogin', false);
-            localStorage.removeItem('token');
-            localStorage.removeItem('userImage');
-            localStorage.removeItem('username');
-        }, timeToWaitInMilliseconds);
-
-
-    </script>
 </head>
 
 <body class="home">
