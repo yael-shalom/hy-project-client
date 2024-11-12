@@ -6,12 +6,42 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Quiz</title>
   <link rel="shortcut icon" href="../assets/images/lg1.png" type="image/x-icon">
+  <link rel="stylesheet" href="../assets/fonts/fonts.css" />
   <link rel="stylesheet" href="../css/quiz.css" />
+  <link rel="stylesheet" href="../css/header.css" />
   <script src="../js/my-fetch.js" defer></script>
   <script src="../js/quiz.js" defer></script>
 </head>
 
 <body>
+  <header class="flex-col">
+    <div class="flex-row flex-between align-center">
+      <h1 class="logo"><a href="./index.html">QuizMe</a></h1>
+      <div class="navigation-search">
+        <form action="/search" class="flex-between">
+          <input type="search" placeholder="מה תרצו ללמוד?" name="quizSearch" autocomplete="off" />
+          <i class="search-icon">search</i>
+        </form>
+      </div>
+
+      <button id="enter" class="dark-btn" onclick="">
+        כניסה
+      </button>
+      <!-- //////////////////////////////////////////////////////////////////////////////////////////////// -->
+      <div id="profileWindow" class="profile-window">
+        <div id="removeBtn" onclick="handleRemove()">הסרה</div>
+        <div id="logoutBtn" onclick="handleLogout()">התנתקות</div>
+      </div>
+      <!-- //////////////////////////////////////////////////////////////////////////////////////////////// -->
+    </div>
+    <nav class="flex-row flex-between">
+      <a href="../index.html">דף הבית</a>
+      <a href="../pages/about.html">אודות</a>
+      <a href="../pages/quizzes.html">שאלונים</a>
+      <a href="../pages/my-quizzes.html" onclick="getMyQuizzes()">השאלונים שלי</a>
+      <a href="../pages/add-quiz.html">הוספת שאלון</a>
+    </nav>
+  </header>
   <div id="quizData"></div>
 </body>
 
