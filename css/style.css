@@ -249,12 +249,10 @@ header {
 }
 
 .home #hot-quizzes {
-    background: url(../assets/images/hot-quizzes.png) 50% 14% no-repeat;
-    background-size: cover;
     font-size: 1.2em;
     position: relative;
     top: 760px;
-    padding: 325px;
+    background-color: #cbc9ba;
 }
 
 #level-up {
