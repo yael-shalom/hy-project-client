@@ -1,8 +1,5 @@
 const baseURL = "http://localhost:5000";
 
-function openAddQuiz() {
-    window.open(`./pages/frame.html?page=add-quiz`, '_self');
-}
 function openQuizzes() {
     window.open(`./pages/frame.html?page=quizzes`, '_self');
 }
