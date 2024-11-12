@@ -20,6 +20,8 @@
 
 body {
     font-family: Rubik, Lato, sans-serif;
+    --main-color--: #abced2;
+    background-color: var(--main-color--);
 }
 
 nav {

@@ -1,5 +1,6 @@
 body {
-    background-color: #d9d5ca;
+    --main-color--: #abced2;
+    background-color: var(--main-color--);
     color: #295773;
     direction: rtl;
     font-family: Rubik, Lato, sans-serif;

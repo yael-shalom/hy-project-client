@@ -1,5 +1,7 @@
 body {
     --main-color--: #abced2;
+    --button-color--: #b42529eb;
+    --button-hover--:#b42529;
     background-color: var(--main-color--);
     font-family: Rubik, Lato, sans-serif;
     height: 100vh;
@@ -10,7 +12,7 @@ body {
 button {
     position: relative;
     color: aliceblue;
-    background-color: #295773;
+    background-color: var(--button-color--);
     border: none;
     border-radius: 5px;
     height: 2.7em;
@@ -22,7 +24,7 @@ button {
 }
 
 button:hover {
-    background-color: #236e9d;
+    background-color: var(--button-color--);
 }
 
 .image-home-page {
@@ -124,7 +126,7 @@ input[type=search]+i {
     border-radius: 4px;
     border: none;
     border-bottom: 1px solid #e6e6e6;
-    background: #f2f2f2;
+    background-color: var(--button-color--);
     font-size: 14px;
     width: 100%;
     display: inline;
@@ -135,7 +137,7 @@ input[type=search]+i {
 }
 
 .Button--Callout {
-    background: #295773;
+    background-color: var(--button-color--);
     padding: 17px 45px;
     color: #fff;
     border: none;
@@ -208,11 +210,11 @@ header {
 
 .Button--Light {
     background: #f6f4f1;
-    color: #295773;
+    color: var(--button-hover--);
 }
 
 .Button:hover {
-    background-color: #236e9d;
+    background-color: var(--button-hover--);
     color: aliceblue;
 }
 
