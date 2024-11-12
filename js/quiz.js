@@ -186,4 +186,15 @@ onload = () => {
     getQuizById(searchParams.get('id'));
     updateQuiz();
     addDeleteBtn();
+    if(JSON.parse(localStorage.getItem('isLogin')) == true)
+    {
+        const btn = document.querySelector('#enter');
+        btn.textContent = "";
+        btn.classList.add('profile');
+        btn.style.backgroundImage = "url(localStorage.getItem('userImage'))";
+        const img = document.createElement("img");
+        img.src = localStorage.getItem('userImage');
+        img.classList.add('profile')
+        btn.appendChild(img)
+    }
 }
