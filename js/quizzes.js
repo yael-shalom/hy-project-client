@@ -3,6 +3,7 @@ const baseURL = "http://localhost:5000";
 const searchParams = new URLSearchParams(location.search);
 console.log(searchParams.get("isMy"));
 const isMy = searchParams.get("isMy");
+const quizSearch = searchParams.get("quizSearch");
 let quizzes;
 
 const getMyQuizzes = async () => {
@@ -33,6 +34,28 @@ const getAllQuizzes = async () => {
         const res = await myFetch(`${baseURL}/quizzes`, 'GET');
         quizzes = res.data;
         console.log(quizzes);
+        const quizzesCon = document.querySelector("#quizzes");
+        for (const quiz of quizzes) {
+            let div = document.createElement("div");
+            div.classList.add("quiz");
+            div.dataset.id = quiz._id;
+            div.textContent = quiz.name;
+            div.addEventListener("click", (event) => {
+                window.open(`./quiz.html?id=${quiz._id}`, '_self');
+            });
+            quizzesCon.append(div);
+        }
+    } catch (error) {
+        console.log(error);
+    }
+};
+
+const filterByQuizName = async () => {
+    try {
+        const res = await myFetch(`${baseURL}/quizzes`, 'GET');
+        const allQuizzes = res.data;
+        console.log(allQuizzes);
+        quizzes = allQuizzes.filter(q => q.name.includes(quizSearch));
         const quizzesCon = document.querySelector("#quizzes");
         for (const quiz of quizzes) {
             let div = document.createElement("div");
@@ -153,8 +176,11 @@ onload = ()=>{
     if(isMy === "true") {
         getMyQuizzes();
     }
-    else {
+    else if(isMy === "false") {
         getAllQuizzes()
+    }
+    if(quizSearch){
+        filterByQuizName();
     }
     getAllCategories();
     if (JSON.parse(localStorage.getItem('isLogin')) == true) {
