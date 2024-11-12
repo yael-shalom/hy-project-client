@@ -61,28 +61,32 @@ const getQuizById = async (id) => {
 
 const calculate = (quiz) => {
     score = 0;
+    let flag = false;
     scrollToTop()
     header.appendChild(scoreCon);
     const questions = quiz.questions;
     const inputs = document.querySelectorAll("input");
 
     for (const input of inputs) {
-        input.onclick = () => { return false; };//חסימת כפתורי הרדיו שלא יהיו ניתנים לשינוי
-        const answerId = input.id;
-        const checked = input.checked;
-        const questionId = input.name;
-        const question = questions.find(q => q._id === questionId);
-        const answer = question.answers.find(a => a._id === answerId);
-        const isRight = answer.isRight;
-        if (isRight === true && checked === true) {
-            score += quiz.score;
-            input.classList.add("right");
+        if (flag) {
+            input.onclick = () => { return false; };//חסימת כפתורי הרדיו שלא יהיו ניתנים לשינוי
+            const answerId = input.id;
+            const checked = input.checked;
+            const questionId = input.name;
+            const question = questions.find(q => q._id === questionId);
+            const answer = question.answers.find(a => a._id === answerId);
+            const isRight = answer.isRight;
+            if (isRight === true && checked === true) {
+                score += quiz.score;
+                input.classList.add("right");
+            }
+            else {
+                input.classList.add("wrong");
+            }
+            if (isRight === true)
+                input.parentElement.classList.add("correct");
         }
-        else {
-            input.classList.add("wrong");
-        }
-        if (isRight === true)
-            input.parentElement.classList.add("correct");
+        flag = true;
     }
     showScore(0);
     // updateUserAfterQuiz(quiz.owner._id);
