@@ -574,6 +574,10 @@ header {
   text-decoration: none;
 }
 
+input.radio {
+  width: initial;
+}
+
 /* =================== scrollbar =================== */
 /* width */
 ::-webkit-scrollbar {

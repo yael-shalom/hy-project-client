@@ -78,6 +78,10 @@ label:hover {
     cursor: pointer;
 }
 
+input.radio {
+    width: initial;
+  }
+
 /* =================== scrollbar =================== */
 /* width */
 ::-webkit-scrollbar {
