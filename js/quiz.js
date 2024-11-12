@@ -12,8 +12,8 @@ header.classList.add("flex-row");
 
 const getQuizById = async (id) => {
     try {
-        const res = await fetch(`${baseURL}/quizzes/${id}`);//חיבור לדטה בייס
-        const quiz = await res.json();//המרת הנתונים לאובייקט
+        const res = await myFetch(`${baseURL}/quizzes/${id}`, 'GET');
+        const quiz = res.data;//המרת הנתונים לאובייקט
         console.log(quiz);
         const quizData = document.querySelector("#quizData");//מכיל את כל פרטי השאלון
         let h1 = document.createElement("h1");
@@ -39,6 +39,7 @@ const getQuizById = async (id) => {
                 input.id = answer._id;
                 input.type = "radio";
                 input.name = q._id;
+                input.classList.add('radio');
                 quizCon.appendChild(input);
                 quizCon.appendChild(label);
                 questionContainer.appendChild(quizCon);
@@ -58,30 +59,35 @@ const getQuizById = async (id) => {
 
 const calculate = (quiz) => {
     score = 0;
+    let flag = false;
     scrollToTop()
     header.appendChild(scoreCon);
     const questions = quiz.questions;
     const inputs = document.querySelectorAll("input");
 
     for (const input of inputs) {
-        input.onclick = () => { return false; };//חסימת כפתורי הרדיו שלא יהיו ניתנים לשינוי
-        const answerId = input.id;
-        const checked = input.checked;
-        const questionId = input.name;
-        const question = questions.find(q => q._id === questionId);
-        const answer = question.answers.find(a => a._id === answerId);
-        const isRight = answer.isRight;
-        if (isRight === true && checked === true) {
-            score += quiz.score;
-            input.classList.add("right");
+        if (flag) {
+            input.onclick = () => { return false; };//חסימת כפתורי הרדיו שלא יהיו ניתנים לשינוי
+            const answerId = input.id;
+            const checked = input.checked;
+            const questionId = input.name;
+            const question = questions.find(q => q._id === questionId);
+            const answer = question.answers.find(a => a._id === answerId);
+            const isRight = answer.isRight;
+            if (isRight === true && checked === true) {
+                score += quiz.score;
+                input.classList.add("right");
+            }
+            else {
+                input.classList.add("wrong");
+            }
+            if (isRight === true)
+                input.parentElement.classList.add("correct");
         }
-        else {
-            input.classList.add("wrong");
-        }
-        if (isRight === true)
-            input.parentElement.classList.add("correct");
+        flag = true;
     }
     showScore(0);
+    // updateUserAfterQuiz(quiz.owner._id);
 };
 
 const showScore = (count) => {
@@ -93,7 +99,7 @@ const showScore = (count) => {
 };
 
 const shuffleArray = (array) => {
-    for (let i = array.length - 1; i > 0; i--) {
+    for (let i = array?.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
         [array[i], array[j]] = [array[j], array[i]];
     }
@@ -109,10 +115,10 @@ const scrollToTop = () => {
 };
 
 const updateQuiz = async () => {
-    const res = await fetch(`${baseURL}/quizzes/${id}`);//חיבור לדטה בייס
-    const quiz = await res.json();//המרת הנתונים לאובייקט
+    const res = await myFetch(`${baseURL}/quizzes/${id}`, 'GET');//חיבור לדטה בייס
+    const quiz = res.data;//המרת הנתונים לאובייקט
     console.log(quiz);
-
+    if (quiz.isOwner) {
     let button = document.createElement("button");
     button.classList.add("quiz");
     button.dataset.id = quiz._id;
@@ -122,36 +128,124 @@ const updateQuiz = async () => {
     };
     const body = document.querySelector("body");
     body.appendChild(button)
+    }
 };
 
-const addDeleteBtn = () => {
-    let button = document.createElement("button");
-    button.classList.add("quiz");
-    button.textContent = "מחק שאלון";
-    button.onclick = deleteQuiz;
-    const body = document.querySelector("body");
-    body.appendChild(button)
+const addDeleteBtn = async () => {
+    const res = await myFetch(`${baseURL}/quizzes/${id}`, 'GET');
+    const quiz = res.data;//המרת הנתונים לאובייקט
+    console.log(quiz);
+    
+    if (quiz.isOwner) {
+        let button = document.createElement("button");
+        button.classList.add("quiz");
+        button.textContent = "מחק שאלון";
+        button.onclick = deleteQuiz;
+        const body = document.querySelector("body");
+        body.appendChild(button)
+    }
 }
 
 async function deleteQuiz() {
     try {
-        const response = await fetch(`${baseURL}/quizzes/${id}`, {
-            method: 'DELETE',
-            headers: {
-                'Authorization': `Bearer ${localStorage.getItem('token')}`              }
-        });
+        const res = await myFetch(`${baseURL}/quizzes/${id}`, 'DELETE');
 
-        if (response.ok) {
+        if (res.ok) {
             console.log('Quiz deleted successfully');
             window.open('../pages/quizzes.html', '_self');
         } else {
-            const data = await response.json();
-            console.error('Error deleting quiz:', data);
+            console.error('Error deleting quiz');
         }
     } catch (error) {
         console.error('Error:', error);
         alert('Failed to delete quiz.');
     }
 }
-updateQuiz();
-addDeleteBtn();
+
+// async function updateUserAfterQuiz(score, userId) {
+//     const res = await fetch(`${baseURL}/users/${userId}`);
+//     const currentUser = await res.json();
+
+//     const user = {
+//         _id: userId
+//     };
+
+//     try {        
+//         // שליחת הנתונים לשרת
+//         const res = await myFetch(`${baseURL}/users/${userId}`, 'PATCH',
+//             {
+//                 headers: { 'Content-Type': 'application/json', },
+//                 body: JSON.stringify(user)
+//             });
+//         const data = res.data;
+
+//         console.log('user updated:', data);
+//         alert('user updated successfully!');
+//     } catch (error) {
+//         console.error('Error:', error);
+//         alert('Failed to update user.');
+//     }
+// }
+
+//#region add profile
+const profileWindow = document.getElementById('profileWindow');
+
+function openProfileWindow() {
+    profileWindow.style.display = 'block';
+}
+
+async function handleRemove() {
+    // קוד להסרת משתמש
+    const userId = "6732ad87b6562d5e3932f894";
+    try {
+        const res = await myFetch(`${baseURL}/users/${userId}`, 'DELETE');
+
+        if (res.ok) {
+            localStorage.removeItem('isLogin');
+            localStorage.removeItem('token');
+            localStorage.removeItem('userImage');
+            localStorage.removeItem('username');
+            console.log('user deleted successfully');
+            window.open('../pages/quizzes.html', '_self');
+        } else {
+            console.error('Error deleting user');
+        }
+    } catch (error) {
+        console.error('Error:', error);
+        alert('Failed to delete user.');
+    }
+    profileWindow.style.display = 'none'; // לסגור את החלונית לאחר הפעולה
+}
+
+function handleLogout() {
+    // קוד להתנתקות
+    localStorage.setItem('isLogin', false);
+    localStorage.removeItem('token');
+    localStorage.removeItem('userImage');
+    localStorage.removeItem('username');
+    profileWindow.style.display = 'none'; // לסגור את החלונית לאחר הפעולה
+}
+
+onload = () => {
+    getQuizById(searchParams.get('id'));
+    updateQuiz();
+    addDeleteBtn();
+    if (JSON.parse(localStorage.getItem('isLogin')) == true) {
+        const btn = document.querySelector('#enter');
+        btn.textContent = "";
+        btn.classList.add('profile');
+        if (localStorage.getItem('userImage') !== 'undefined') {
+            const img = document.createElement("img");
+            img.src = localStorage.getItem('userImage');
+            img.classList.add('profile')
+            btn.appendChild(img)
+        }
+        else {
+            btn.style.backgroundColor = "#b4292e";
+            btn.style.color = "white";
+            btn.textContent = localStorage.getItem('username').slice(0, 1);
+        }
+        btn.onclick = openProfileWindow;
+    }
+}
+//#endregion

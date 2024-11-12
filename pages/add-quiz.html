@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="he">
 <head>
@@ -9,31 +8,58 @@
     <link rel="shortcut icon" href="../assets/images/lg1.png" type="image/x-icon">
     <link rel="stylesheet" href="../assets/fonts/fonts.css">
     <link rel="stylesheet" href="../css/styles.css">
-    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/header.css">
+    <script src="../js/my-fetch.js" defer></script>
     <script src="../js/add-quiz.js" defer></script>
 </head>
-<body onload="load()">
-    <h1>Create a New Quiz</h1>
+<body>
+    <header class="flex-col">
+        <div class="flex-row flex-between align-center">
+          <h1 class="logo"><a href="./index.html">QuizMe</a></h1>
+          <div class="navigation-search">
+            <form action="/search" class="flex-between">
+              <input type="search" placeholder="מה תרצו ללמוד?" name="quizSearch" autocomplete="off" />
+              <i class="search-icon">search</i>
+            </form>
+          </div>
     
+          <button id="enter" class="dark-btn" onclick="">
+            כניסה
+          </button>
+          <!-- //////////////////////////////////////////////////////////////////////////////////////////////// -->
+          <div id="profileWindow" class="profile-window">
+            <div id="removeBtn" onclick="handleRemove()">הסרה</div>
+            <div id="logoutBtn" onclick="handleLogout()">התנתקות</div>
+          </div>
+          <!-- //////////////////////////////////////////////////////////////////////////////////////////////// -->
+        </div>
+        <nav class="flex-row flex-between">
+          <a href="../index.html">דף הבית</a>
+          <a href="../pages/about.html">אודות</a>
+          <a href="../pages/quizzes.html">שאלונים</a>
+          <a href="../pages/my-quizzes.html" onclick="getMyQuizzes()">השאלונים שלי</a>
+          <a href="../pages/add-quiz.html">הוספת שאלון</a>
+        </nav>
+      </header>
+    <h1>הוספת שאלון</h1>
     <form id="quiz-form">
-        <label for="quiz-name">Quiz Name:</label>
+        <label for="quiz-name">שם שאלון:</label>
         <input type="text" id="quiz-name" name="quizName" required><br><br>
 
         <label for="is-private">פרטי</label>
         <input type="checkbox" id="is-private" name="isPrivate" onchange="addSpecialCategories(event)"><br><br>
         
 
-        <label for="category">Category:</label>
+        <label for="category">קטגוריה</label>
         <select id="category" name="category">
         </select><br><br>
 
         <div id="questions-container">
-            <h3>Questions</h3>
-            <!-- Questions will be dynamically added here -->
+            <h3>שאלות</h3>
         </div>
 
-        <button type="button" onclick="addQuestion()">Add Question</button><br><br>
-        <button type="submit" id="add-quiz">Submit Quiz</button>
+        <button type="button" onclick="addQuestion()">הוסף שאלה</button><br><br>
+        <button type="submit" id="add-quiz">הוסף שאלון</button>
     </form>
 </body>
 </html>

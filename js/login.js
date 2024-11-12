@@ -5,21 +5,20 @@ let userName;
 document.getElementById('login-form').addEventListener('submit', async (event) => {
     event.preventDefault();
     try {
-        const email = document.getElementById('email').value;
-        const name = document.getElementById('name').value;
-        const password = document.getElementById('password').value;
         let path = event.submitter.id === 'signIn'? 'signin':'signup';
+        const fileInput = document.getElementById('fileInput');
+        const file = fileInput.files[0];
+        const formData = new FormData(event.target);
+        formData.append('imgUrl', file);
 
         // שליחת הנתונים לשרת
-        const res = await fetch(`${baseURL}/users/${path}`, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ email, name, password })
+        const res = await myFetch(`${baseURL}/users/${path}`, 'POST',{
+            body: formData
         })
         
         console.log(res);
 
-        const data = await res.json();
+        const data = res.data;
         console.log(data);
         
         if (!res.ok)
@@ -29,6 +28,8 @@ document.getElementById('login-form').addEventListener('submit', async (event) =
         userName = data.username;
         localStorage.setItem('token', token);
         localStorage.setItem('username', userName);
+        localStorage.setItem('isLogin', true);
+        localStorage.setItem('userImage', data.userImg);
         alert('Login successful!');
         window.open('../pages/frame.html?page=quizzes', '_self');
 
@@ -39,4 +40,14 @@ document.getElementById('login-form').addEventListener('submit', async (event) =
         alert('An error occurred. Please try again later.');
     }
 
+});
+
+//close the login page by click on the background of the page
+document.addEventListener('DOMContentLoaded', function() {
+    const body = document.querySelector('body');
+    body.addEventListener('click', function(event) {
+        if (event.target === body) {
+            history.back();
+        }
+    });
 });

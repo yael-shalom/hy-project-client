@@ -1,196 +1,53 @@
 <!DOCTYPE html>
 <html lang="he">
+
 <head>
-    <meta charset="UTF-8">
-    <link rel="shortcut icon" href="../assets/images/lg1.png" type="image/x-icon">
-    <link rel="stylesheet" href="./assets/fonts/fonts.css">
-    <link rel="stylesheet" href="../css/styles.css">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="" rel="stylesheet" />
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>H & Y</title>
-
-    <script>
-      async function getAllUsers() {
-        try {
-          const res = await fetch("http://localhost:5000/users");
-          const users = await res.json();
-          console.log(users);
-
-          const container = document.querySelector("#container");
-          container.innerHTML = users.map((u) => `<p>${u.name}</p>`).join("");
-        } catch (error) {
-          console.log(error);
-        }
-      }
-      async function login() {
-        try {
-          const res = await fetch("http://localhost:5000/users/login", {
-            method: "POST",
-            body: JSON.parse({ name: "abc" }),
-          });
-          const users = await res.json();
-          console.log(users);
-
-          const container = document.querySelector("#container");
-          container.innerHTML = users.map((u) => `<p>${u.name}</p>`).join("");
-        } catch (error) {
-          console.log(error);
-        }
-      }
-    </script>
+  <meta charset="UTF-8">
+  <link rel="shortcut icon" href="../assets/images/lg1.png" type="image/x-icon">
+  <link rel="stylesheet" href="../assets/fonts/fonts.css">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="../css/about.css" rel="stylesheet" />
+  <link href="../css/header.css" rel="stylesheet" />
+  <link href="../css/style.css" rel="stylesheet" />
+  <script src="../js/about.js"></script>
+  <script src="../js/my-fetch.js"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ABOUT</title>
 </head>
 
-<body>  
-
-  <button onclick="getAllUsers()">get users</button>
-  <div id="container"></div>
-  <header>
-    <nav>
-        <div class="navigation-top">
-            <h1 class="logo"><a href="./index.html"> H & Y </a></h1>
-            <div class="navigation-search">
-                <form method="GET" action="/search" class="flex-between">
-                    <input type="search" placeholder="מה תרצו ללמוד?" name="q" autocomplete="off">
-                    <i class="material-icons">search</i>
-                </form>
-            </div>
-
-            <a href="#" class="openModal Button Button--Callout"> כניסה </a>
+<body>
+  <header class="flex-col">
+      <div class="flex-row flex-between align-center">
+        <h1 class="logo"><a href="./index.html">QuizMe</a></h1>
+        <div class="navigation-search">
+          <form action="/search" class="flex-between">
+            <input type="search" placeholder="מה תרצו ללמוד?" name="quizSearch" autocomplete="off" />
+            <i class="search-icon">search</i>
+          </form>
         </div>
-    </nav>
-
-   <div class="source"> 
-        <a target="content" class="menu" href="./about.html"> אודות </a>
-        <a target="content" class="menu" href="./quizzes.html"> שאלונים </a>
-        <a target="content" class="menu" href="./add-quiz.html"> הוספת שאלון </a>
-        <a target="content" class="menu" href="./my-quizzes.html"> השאלונים שלי </a>
-    </div>
-
-</header>
-
-
-  <div class="nav" id="place">
-    <nav>
-     <ul>
-      <li><a href ="./index.html"> קצת הסטוריה </a></li>
-       <li><a href ="./P2.html"> מאחורי הקלעים </a></li>
-       <li><a href ="./P3.html"> המלצות </a></li>
-       <li><a href ="./P4.html"> שתפו אותנו </a></li>
-     </ul>
-    </nav>
-   </div>
-
-   
-  <main>
-
-    <div id="history"></div>
-    <div id="behind"></div>
-    <div id="Recommendations"></div>
-    <div id="Sharing"></div>
-
-
-
-
-   <div id="about" class="about">
-     <br> <br> <br><br>
-     <h2>  ISRAELY </h2>
-     <p>
-      </p>
-    <h2 >קצת על H&Y</h2>
-    <p> עוד מימי 1960 היו ידועים בעולם הפרוייקטים ורעיונותיה של חברתנו       
-    </p> 
-  </div>
-
-  <div id="photo">
-    <br>
-    <h2> שווה הצצה</h2>
-    <div class="pic" >
-      <div class="item1"> <img src="../assets/images/1.png" height="200" width="250"class="photo"> </div>
-      <div class="item2"><img src="../assets/images/2.png" height="200" width="250" class="photo"></div> 
-      <div class="item3"><img src="../assets/images/3.png" height="200" width="250"class="photo"> </div>
-      <div class="item4"><img src="../assets/images/4.png" height="200" width="250" class="photo"></div> 
-      <video  class="media" src="../assets/images/5.mp4"  controls loop autoplay></video></div>
-   </div>
   
-    <div class="share" id="share">
-      <h2>מטיילים ממליצים</h2>
-      <ul>
-        <li> ידע מדוייק וברור (ד"ר הראל גנוט)</li>
-        <br>
-        <li>  תוכן מעודכן ומפוקח (פרופסור קובי מיה)</li>        
-        <br>
-        <li> התרשמתי מאד מהפתיחות והיוזמה חוצת המגזרים (פרופסור אליעד נחום) </li>
-        <br>
-        <li>  נגיש ואיכות במקום אחד (קים חלולו) </li>
-        <br>
-      </ul>
-    </div>
-  </main>
+        <button id="enter" class="dark-btn" onclick="">
+          כניסה
+        </button>
+        <!-- //////////////////////////////////////////////////////////////////////////////////////////////// -->
+        <div id="profileWindow" class="profile-window">
+          <div id="removeBtn" onclick="handleRemove()">הסרה</div>
+          <div id="logoutBtn" onclick="handleLogout()">התנתקות</div>
+        </div>
+        <!-- //////////////////////////////////////////////////////////////////////////////////////////////// -->
+      </div>
+      <nav class="flex-row flex-between">
+        <a href="../index.html">דף הבית</a>
+        <a href="../pages/about.html">אודות</a>
+        <a href="../pages/quizzes.html">שאלונים</a>
+        <a href="../pages/my-quizzes.html" onclick="getMyQuizzes()">השאלונים שלי</a>
+        <a href="../pages/add-quiz.html">הוספת שאלון</a>
+      </nav>
+    </header>
 
-    <footer>
-      <p>❤</p>
-      <p>H&T</p>
-      <br>
-      <p><a href="mailto:hp0504124950@gmail.com">H&T@gmail.com</a></p>
-    </footer>
-
-  </form>
+  <div id="container"></div>
 </body>
+
 </html>
-               
-
-
-                          
-                                                /\
-                                               //\\
-                                              ///\\\
-                                             ////\\\\
-                                            /////\\\\\
-                                           //////\\\\\\
-                                          ///////\\\\\\\
-                                         ////////\\\\\\\\
-                                        /////////\\\\\\\\\
-                                       //////////\\\\\\\\\\
-                                      ///////////\\\\\\\\\\\
-                                     ////////////\\\\\\\\\\\\
-                                    /////////////\\\\\\\\\\\\\
-                                   //////////////\\\\\\\\\\\\\\
-                                  ///////////////\\\\\\\\\\\\\\\
-                                 ////////////////\\\\\\\\\\\\\\\\
-                                /////////////////\\\\\\\\\\\\\\\\\
-                               //////////////////\\\\\\\\\\\\\\\\\\
-                              ///////////////////\\\\\\\\\\\\\\\\\\\
-                             ////////////////////\\\\\\\\\\\\\\\\\\\\ 
-                            /////////////////////\\\\\\\\\\\\\\\\\\\\\
-                           //////////////////////\\\\\\\\\\\\\\\\\\\\\\
-                          ///////////////////////\\\\\\\\\\\\\\\\\\\\\\\
-                         ////////////////////////\\\\\\\\\\\\\\\\\\\\\\\\
-                        /////////////////////////\\\\\\\\\\\\\\\\\\\\\\\\\ 
-                       //////////////////////////\\\\\\\\\\\\\\\\\\\\\\\\\\ 
-                      ///////////////////////////\\\\\\\\\\\\\\\\\\\\\\\\\\\ 
-                     ////////////////////////////\\\\\\\\\\\\\\\\\\\\\\\\\\\\
-                    /////////////////////////////\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
-                   //////////////////////////////\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
-                  ///////////////////////////////\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
-                 ////////////////////////////////\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
-                /////////////////////////////////\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
-               //////////////////////////////////\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
-              ///////////////////////////////////\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
-             ////////////////////////////////////\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
-            /////////////////////////////////////\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
-           //////////////////////////////////////\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
-          ///////////////////////////////////////\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
-         ////////////////////////////////////////\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
-        /////////////////////////////////////////\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
-       //////////////////////////////////////////\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
-      ///////////////////////////////////////////\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
-     ////////////////////////////////////////////\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
-    /////////////////////////////////////////////\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
-   //////////////////////////////////////////////\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
-  ///////////////////////////////////////////////\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
- ////////////////////////////////////////////////\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
-/////////////////////////////////////////////////\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
-

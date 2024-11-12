@@ -15,10 +15,17 @@ body {
     color: #d9d5ca;
     border-top: 0.2px solid #386581;
     left: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .quiz:hover {
     background-color: #386581;
+}
+
+.quiz.private {
+    background-color: #555;
 }
 
 #quizzes {
@@ -45,6 +52,11 @@ ul {
 li {
     margin: 10px;
     cursor: pointer;
+}
+
+.top {
+    position: relative;
+    top: 100px;
 }
 
 /* =================== scrollbar =================== */

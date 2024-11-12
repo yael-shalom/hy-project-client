@@ -8,7 +8,13 @@ const myFetch = async (url, method = 'GET', options = { headers: {} }) => {
                 'Authorization': `Bearer ${localStorage.getItem('token')}`
             }
         });
-        const data = await res.json();
+        
+        let data;
+        try{
+            data = await res.json();
+        }catch{
+
+        }
 
         if (!res.ok)
             throw new Error({ ok: res.ok, status: res.status, message: data.error.message });

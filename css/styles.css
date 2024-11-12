@@ -15,6 +15,9 @@ body
 {
     direction: rtl;
     margin: 0;
+    font-family: Rubik, Lato, sans-serif;
+    position: relative;
+    top: 80px;
 }
 
 
@@ -82,13 +85,11 @@ nav li a:hover
 
 h1
 {
-    font-family: cursive;
     font-size: 80px;
 }
 
 h2
 {
-  font-family: cursive;
   font-size: 50px;
 }
 
@@ -573,6 +574,10 @@ header {
 #partner-program a {
   color: #99c93d;
   text-decoration: none;
+}
+
+input.radio {
+  width: initial;
 }
 
 /* =================== scrollbar =================== */

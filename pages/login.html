@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="he">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,9 +11,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="" rel="stylesheet" />
+    <script src="../js/my-fetch.js" defer></script>
     <script src="../js/login.js" defer></script>
     <title>LOG IN - UP</title>
-</head> 
+</head>
 
 <body>
     <div class="login-container">
@@ -26,13 +28,17 @@
 
             <label for="password">סיסמה</label>
             <input type="password" id="password" name="password" required>
-            
+
+            <label for="fileInput"></label>
+            <input type="file" id="fileInput" accept="image/*">
+
             <a href="#" class="forgot-password">Forgot?</a>
             <button type="submit" id="signIn">כניסה</button>
             <button type="submit" id="signUp">הרשמה</button>
 
-        </form>       
-        </div>
+        </form>
+    </div>
     </div>
 </body>
+
 </html>
