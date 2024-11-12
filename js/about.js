@@ -39,6 +39,10 @@ function handleLogout() {
     profileWindow.style.display = 'none'; // לסגור את החלונית לאחר הפעולה
 }
 
+function cancel() {
+    profileWindow.style.display = 'none';
+}
+
 onload = () => {
     if (JSON.parse(localStorage.getItem('isLogin')) == true) {
         const btn = document.querySelector('#enter');
