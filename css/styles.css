@@ -1,6 +1,6 @@
 * {
   text-align: center;
-  background-color: #d9d5ca;
+  background-color: var(--main-color--);
   color: #295773;
 
 }
@@ -284,7 +284,7 @@ body {
 
 button {
   position: relative;
-  color: #d9d5ca;
+  color: var(--main-color--);
   background-color: #295773;
   border: none;
   border-radius: 5px;

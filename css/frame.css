@@ -21,7 +21,7 @@ main {
 }
 
 nav {
-  background-color: var(--main-color);
+  background-color: var(--second-color);
   flex-grow: 1;
   height: 0;
   border-bottom: 0.1px solid #386581;
@@ -34,16 +34,16 @@ nav a {
 }
 
 a {
-  color: var(--second-color);
-}
-
-nav a:hover {
-  background-color: var(--second-color);
   color: var(--main-color);
 }
 
-footer {
+nav a:hover {
   background-color: var(--main-color);
+  color: var(--second-color);
+}
+
+footer {
+  background-color: var(--second-color);
   grid-area: footer;
 }
 
@@ -61,7 +61,7 @@ iframe {
 
 .logo>a {
   height: 75%;
-  color: var(--second-color) !important;
+  color: var(--main-color) !important;
   align-self: center;
 }
 
@@ -75,21 +75,21 @@ header>div {
 }
 
 body {
-  --main-color: #295773;
-  --second-color: #d9d5ca;
+  --second-color: #295773;
+  --main-color: #abced2;
   direction: rtl;
   font-family: Rubik, Helvetica, sans-serif;
-  color: var(--main-color);
+  color: var(--second-color);
   margin: 0;
   min-height: 100vh;
 }
 
 .bg-main {
-  background-color: var(--main-color);
+  background-color: var(--second-color);
 }
 
 .bg-second {
-  background-color: var(--main-color);
+  background-color: var(--second-color);
 }
 
 .grid-container {
@@ -148,8 +148,8 @@ body {
 }
 
 #enter {
-  background: var(--second-color);
-  color: var(--main-color);
+  background: var(--main-color);
+  color: var(--second-color);
 }
 
 input[type="search"]::-webkit-search-cancel-button {

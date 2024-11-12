@@ -37,7 +37,7 @@ body {
 
 .question-container {
     background-color: #295773;
-    color: #d9d5ca;
+    color: var();
     width: 50%;
     margin-top: 20px;
     padding: 0 20px 20px 20px;
