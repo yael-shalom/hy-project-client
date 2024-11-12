@@ -54,7 +54,7 @@ document.getElementById('quiz-form').addEventListener('submit', async function (
         //     body: JSON.stringify(user)
         // })
         console.log('Quiz created:', data);
-        alert('Quiz created successfully!');
+        window.open('../pages/quizzes.html?isMy=false');
     } catch (error) {
         console.error('Error:', error);
         alert('Failed to create quiz.');
@@ -228,7 +228,7 @@ async function updateQuiz(event) {
         const data = res.data;
 
         console.log('Quiz updated:', data);
-        alert('Quiz updated successfully!');
+        window.open('../pages/quizzes.html?isMy=false');
     } catch (error) {
         console.error('Error:', error);
         alert('Failed to update quiz.');

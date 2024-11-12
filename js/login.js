@@ -30,7 +30,6 @@ document.getElementById('login-form').addEventListener('submit', async (event) =
         localStorage.setItem('username', userName);
         localStorage.setItem('isLogin', true);
         localStorage.setItem('userImage', data.userImg);
-        alert('Login successful!');
         window.open('../pages/quizzes.html?isMy=false', '_self');
 
     }
