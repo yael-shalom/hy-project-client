@@ -20,34 +20,34 @@
 
 <body>
   <header class="flex-col">
-      <div class="flex-row flex-between align-center">
-        <h1 class="logo"><a href="./index.html">BRAINSTORMING</a></h1>
-        <div class="navigation-search">
-          <form action="/search" class="flex-between">
-            <input type="search" placeholder="מה תרצו ללמוד?" name="quizSearch" autocomplete="off" />
-            <i class="search-icon">search</i>
-          </form>
-        </div>
-  
-        <button id="enter" class="dark-btn" onclick="">
-          כניסה
-        </button>
-        <!-- //////////////////////////////////////////////////////////////////////////////////////////////// -->
-        <div id="profileWindow" class="profile-window">
-          <div id="removeBtn" onclick="handleRemove()">הסרה</div>
-          <div id="logoutBtn" onclick="handleLogout()">התנתקות</div>
-          <div id="cancelBtn" onclick="cancel()">ביטול</div>
-        </div>
-        <!-- //////////////////////////////////////////////////////////////////////////////////////////////// -->
+    <div class="flex-row flex-between align-center">
+      <h1 class="logo"><a href="./index.html">BRAINSTORMING</a></h1>
+      <div class="navigation-search">
+        <form action="/search" class="flex-between">
+          <input type="search" placeholder="מה תרצו ללמוד?" name="quizSearch" autocomplete="off" />
+          <i class="search-icon">search</i>
+        </form>
       </div>
-      <nav class="flex-row flex-between">
-        <a href="../index.html">דף הבית</a>
-        <a href="../pages/about.html">אודות</a>
-        <a href="../pages/quizzes.html">שאלונים</a>
-        <a href="../pages/my-quizzes.html" onclick="getMyQuizzes()">השאלונים שלי</a>
-        <a href="../pages/add-quiz.html">הוספת שאלון</a>
-      </nav>
-    </header>
+
+      <button id="enter" class="dark-btn" onclick="">
+        כניסה
+      </button>
+      <!-- //////////////////////////////////////////////////////////////////////////////////////////////// -->
+      <div id="profileWindow" class="profile-window">
+        <div id="removeBtn" onclick="handleRemove()">הסרה</div>
+        <div id="logoutBtn" onclick="handleLogout()">התנתקות</div>
+        <div id="cancelBtn" onclick="cancel()">ביטול</div>
+      </div>
+      <!-- //////////////////////////////////////////////////////////////////////////////////////////////// -->
+    </div>
+    <nav class="flex-row flex-between">
+      <a href="../index.html">דף הבית</a>
+      <a href="../pages/about.html">אודות</a>
+      <a href="../pages/quizzes.html">שאלונים</a>
+      <a href="../pages/my-quizzes.html" onclick="getMyQuizzes()">השאלונים שלי</a>
+      <a href="../pages/add-quiz.html">הוספת שאלון</a>
+    </nav>
+  </header>
 
   <div id="aboutour">
     <h2> אודותינו</h2>
