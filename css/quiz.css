@@ -82,6 +82,16 @@ input.radio {
     width: initial;
   }
 
+#quizData {
+    position: relative;
+    top: 80px;
+}
+
+header {
+    position: relative !important;
+}
+
+
 /* =================== scrollbar =================== */
 /* width */
 ::-webkit-scrollbar {

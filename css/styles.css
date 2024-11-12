@@ -16,6 +16,8 @@ body
     direction: rtl;
     margin: 0;
     font-family: Rubik, Lato, sans-serif;
+    position: relative;
+    top: 80px;
 }
 
 
