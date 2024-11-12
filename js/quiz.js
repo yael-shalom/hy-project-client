@@ -41,6 +41,7 @@ const getQuizById = async (id) => {
                 input.id = answer._id;
                 input.type = "radio";
                 input.name = q._id;
+                input.classList.add('radio');
                 quizCon.appendChild(input);
                 quizCon.appendChild(label);
                 questionContainer.appendChild(quizCon);
