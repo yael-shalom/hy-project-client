@@ -31,7 +31,7 @@ document.getElementById('login-form').addEventListener('submit', async (event) =
         localStorage.setItem('isLogin', true);
         localStorage.setItem('userImage', data.userImg);
         alert('Login successful!');
-        window.open('../pages/frame.html?page=quizzes', '_self');
+        window.open('../pages/quizzes.html', '_self');
 
     }
     catch (error) {
