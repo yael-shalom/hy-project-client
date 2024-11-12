@@ -41,3 +41,13 @@ document.getElementById('login-form').addEventListener('submit', async (event) =
     }
 
 });
+
+//close the login page by click on the background of the page
+document.addEventListener('DOMContentLoaded', function() {
+    const body = document.querySelector('body');
+    body.addEventListener('click', function(event) {
+        if (event.target === body) {
+            history.back();
+        }
+    });
+});
