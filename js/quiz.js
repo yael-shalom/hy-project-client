@@ -152,7 +152,7 @@ async function deleteQuiz() {
 
         if (res.ok) {
             console.log('Quiz deleted successfully');
-            window.open('../pages/quizzes.html', '_self');
+            window.open('../pages/quizzes.html?isMy=false', '_self');
         } else {
             console.error('Error deleting quiz');
         }
@@ -206,7 +206,7 @@ async function handleRemove() {
             localStorage.removeItem('userImage');
             localStorage.removeItem('username');
             console.log('user deleted successfully');
-            window.open('../pages/quizzes.html', '_self');
+            window.open('../pages/quizzes.html?isMy=false', '_self');
         } else {
             console.error('Error deleting user');
         }
