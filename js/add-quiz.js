@@ -47,6 +47,12 @@ document.getElementById('quiz-form').addEventListener('submit', async function (
             body: JSON.stringify(quiz)
         });
         const data = res.data;
+        // const createdQuiz = {_id: data._id, name: data.name};
+        // const user = {_id: data.owner._id, createdQuizzes: [createdQuiz]}
+        // const r = await myFetch(`${_baseURL}/users/${data.owner._id}`, 'PATCH', {
+        //     headers: { 'Content-Type': 'application/json' },
+        //     body: JSON.stringify(user)
+        // })
         console.log('Quiz created:', data);
         alert('Quiz created successfully!');
     } catch (error) {
@@ -87,7 +93,6 @@ function addQuestion() {
     });
 }
 
-
 function addAnswer(button, questionCount) {
     const answersContainer = button.parentElement.querySelector('.answers-container');
     let answerCount = answersContainer.querySelectorAll('.answer').length + 1;
@@ -99,7 +104,7 @@ function addAnswer(button, questionCount) {
         <label>תשובה ${answerCount}:</label>
         <input type="text" class="answer-content" required>
         <label>נכון</label>
-        <input type="radio" class="is-right" name="question${questionCount}"><br><br>
+        <input type="radio" class="is-right radio" name="question${questionCount}"><br><br>
     `;
     answersContainer.appendChild(answerDiv);
 
@@ -116,27 +121,26 @@ function addAnswer(button, questionCount) {
     });
 }
 
-
-const load = async () => {
-    try {
-        const res = await myFetch(`${_baseURL}/categories`, 'GET');
-        let categories = res.data;
-        personalityCategory = categories.find(c => c.name == "אישיות");
-        console.log(personalityCategory);
-        categories = categories.filter(category => category._id !== personalityCategory._id);
-        console.log(categories);
-        const categoriesSelect = document.querySelector("#category");
-        for (const category of categories) {
-            let option = document.createElement("option");
-            option.classList.add("category");
-            option.value = category._id;
-            option.textContent = category.name;
-            categoriesSelect.append(option);
-        }
-    } catch (error) {
-        console.log(error);
-    }
-};
+// const load = async () => {
+//     try {
+//         const res = await myFetch(`${_baseURL}/categories`, 'GET');
+//         let categories = res.data;
+//         personalityCategory = categories.find(c => c.name == "אישיות");
+//         console.log(personalityCategory);
+//         categories = categories.filter(category => category._id !== personalityCategory._id);
+//         console.log(categories);
+//         const categoriesSelect = document.querySelector("#category");
+//         for (const category of categories) {
+//             let option = document.createElement("option");
+//             option.classList.add("category");
+//             option.value = category._id;
+//             option.textContent = category.name;
+//             categoriesSelect.append(option);
+//         }
+//     } catch (error) {
+//         console.log(error);
+//     }
+// };
 
 async function fillFieldsForUpdateQuiz() {
     const res = await myFetch(`${_baseURL}/quizzes/${_id}`, 'GET');
@@ -247,3 +251,86 @@ function addSpecialCategories(event) {
             categoriesSelect.removeChild(lastChild);
     }
 }
+
+
+//#region add profile
+const profileWindow = document.getElementById('profileWindow');
+
+function openProfileWindow() {
+    profileWindow.style.display = 'block';
+}
+
+async function handleRemove() {
+    // קוד להסרת משתמש
+    const userId = "6732ad87b6562d5e3932f894";
+    try {
+        const res = await myFetch(`${_baseURL}/users/${userId}`, 'DELETE');
+
+        if (res.ok) {
+            localStorage.removeItem('isLogin');
+            localStorage.removeItem('token');
+            localStorage.removeItem('userImage');
+            localStorage.removeItem('username');
+            console.log('user deleted successfully');
+            window.open('../pages/quizzes.html', '_self');
+        } else {
+            console.error('Error deleting user');
+        }
+    } catch (error) {
+        console.error('Error:', error);
+        alert('Failed to delete user.');
+    }
+    profileWindow.style.display = 'none'; // לסגור את החלונית לאחר הפעולה
+}
+
+function handleLogout() {
+    // קוד להתנתקות
+    localStorage.setItem('isLogin', false);
+    localStorage.removeItem('token');
+    localStorage.removeItem('userImage');
+    localStorage.removeItem('username');
+    profileWindow.style.display = 'none'; // לסגור את החלונית לאחר הפעולה
+}
+
+onload = async() => {
+    try {
+        const res = await myFetch(`${_baseURL}/categories`, 'GET');
+        let categories = res.data;
+        personalityCategory = categories.find(c => c.name == "אישיות");
+        console.log(personalityCategory);
+        categories = categories.filter(category => category._id !== personalityCategory._id);
+        console.log(categories);
+        const categoriesSelect = document.querySelector("#category");
+        for (const category of categories) {
+            let option = document.createElement("option");
+            option.classList.add("category");
+            option.value = category._id;
+            option.textContent = category.name;
+            categoriesSelect.append(option);
+        }
+    } catch (error) {
+        console.log(error);
+    }
+    if (JSON.parse(localStorage.getItem('isLogin')) == true) {
+        const btn = document.querySelector('#enter');
+        btn.textContent = "";
+        btn.classList.add('profile');
+        if (localStorage.getItem('userImage') !== 'undefined') {
+            const img = document.createElement("img");
+            img.src = localStorage.getItem('userImage');
+            img.classList.add('profile')
+            btn.appendChild(img)
+        }
+        else {
+            btn.style.backgroundColor = "#b4292e";
+            btn.style.color = "white";
+            btn.textContent = localStorage.getItem('username').slice(0, 1);
+        }
+        btn.onclick = openProfileWindow;
+    }
+    else {
+        const btn = document.querySelector('#enter');
+        btn.onclick = ()=>{window.open('../pages/login.html', '_self')};
+    }
+}
+//#endregion
