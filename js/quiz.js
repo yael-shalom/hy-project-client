@@ -120,7 +120,7 @@ const updateQuiz = async () => {
     const res = await myFetch(`${baseURL}/quizzes/${id}`, 'GET');//חיבור לדטה בייס
     const quiz = res.data;//המרת הנתונים לאובייקט
     console.log(quiz);
-    // if (quiz.isOwner) {
+    if (quiz.isOwner) {
     let button = document.createElement("button");
     button.classList.add("quiz");
     button.dataset.id = quiz._id;
@@ -130,20 +130,22 @@ const updateQuiz = async () => {
     };
     const body = document.querySelector("body");
     body.appendChild(button)
-    // }
+    }
 };
 
 const addDeleteBtn = async () => {
     const res = await myFetch(`${baseURL}/quizzes/${id}`, 'GET');
     const quiz = res.data;//המרת הנתונים לאובייקט
-    // if (quiz.isOwner) {
-    let button = document.createElement("button");
-    button.classList.add("quiz");
-    button.textContent = "מחק שאלון";
-    button.onclick = deleteQuiz;
-    const body = document.querySelector("body");
-    body.appendChild(button)
-    // }
+    console.log(quiz);
+    
+    if (quiz.isOwner) {
+        let button = document.createElement("button");
+        button.classList.add("quiz");
+        button.textContent = "מחק שאלון";
+        button.onclick = deleteQuiz;
+        const body = document.querySelector("body");
+        body.appendChild(button)
+    }
 }
 
 async function deleteQuiz() {
