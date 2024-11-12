@@ -307,6 +307,11 @@ header {
     text-decoration: none;
 }
 
+.flex-col {
+    display: flex;
+    flex-direction: column;
+}
+
 /* =================== scrollbar =================== */
 /* width */
 ::-webkit-scrollbar {
