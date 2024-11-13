@@ -10,6 +10,7 @@ body {
 }
  h2{
     text-align: center;
+    color: #295773;
  }
 button {
     position: relative;
@@ -240,8 +241,8 @@ header {
 }
 
 .wrap--large {
-    padding-top: 5em;
-    padding-bottom: 5em;
+    padding-top: 2em;
+    padding-bottom: 3em;
 }
 
 .home #hot-quizzes {
