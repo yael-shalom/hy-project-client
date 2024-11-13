@@ -7,7 +7,6 @@
     <link rel="shortcut icon" href="../assets/images/lg1.png" type="image/x-icon">
     <link rel="stylesheet" href="../assets/fonts/fonts.css">
     <link rel="stylesheet" href="../css/login.css">
-    <script src="../js/add-quiz.js" defer></script>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="" rel="stylesheet" />
@@ -18,10 +17,10 @@
 
 <body>
     <div class="login-container">
-        <h2>SIGN IN - UP</h2>
+        <h2>כניסה - הרשמה</h2>
         <form id="login-form">
             <label for="email">מייל</label>
-            <input type="text" id="email" name="email" required>
+            <input type="email" id="email" name="email" required>
 
             <label for="name">שם משתמש</label>
             <input type="text" id="name" name="name" required>
@@ -31,8 +30,7 @@
 
             <label for="fileInput"></label>
             <input type="file" id="fileInput" accept="image/*">
-
-            <a href="#" class="forgot-password">Forgot?</a>
+            <br>
             <button type="submit" id="signIn">כניסה</button>
             <button type="submit" id="signUp">הרשמה</button>
 
