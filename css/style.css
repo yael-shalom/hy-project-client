@@ -8,7 +8,9 @@ body {
     margin: 0;
     direction: rtl;
 }
- 
+ h2{
+    text-align: center;
+ }
 button {
     position: relative;
     color: aliceblue;
