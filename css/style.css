@@ -37,7 +37,7 @@ button:hover {
 .logo,
 .logo>a {
     position: relative;
-    color: #614a3f;
+    color: var(--button-color--);
     font-weight: 800;
     font-size: 40px;
     text-decoration: none;
@@ -246,7 +246,7 @@ header {
     font-size: 1.2em;
     position: relative;
     top: 760px;
-    background-color: #cbc9ba;
+    background-color: #92b7bd;
 }
 
 #level-up {
