@@ -9,25 +9,28 @@ body {
 
 .quiz {
     height: 100px;
-    background-color: #628da8;
+    background-color: #fdcf43e0;
     position: relative;
     text-align: center;
     cursor: pointer;
     color: var(--main-color--);
-    border-top: 0.2px solid #386581;
+    border-top: 0.2px solid #b42529eb;
     width: 100%;
- 
-
+    color: #b42529eb;
     display: flex;
     justify-content: center;
     align-items: center;
+    font-family: cursive;
+
 
 }
 
 .quiz:hover {
     background-color: #ffc108e0;
-    border: #b83f6c;
-    color: #b83f6c;
+    border: 0.5px solid #b42529eb;
+    color: #b42529eb;
+    font-size: larger;
+
 }
 
 .quiz.private {
