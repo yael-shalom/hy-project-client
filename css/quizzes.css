@@ -9,28 +9,23 @@ body {
 
 .quiz {
     height: 100px;
-    background-color: #fdcf43e0;
+    background-color: #98c3c7;
     position: relative;
     text-align: center;
     cursor: pointer;
     color: var(--main-color--);
-    border-top: 0.2px solid #b42529eb;
+    border: 0.2px solid #b42529eb;
     width: 100%;
     color: #b42529eb;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-family: cursive;
-
-
 }
 
 .quiz:hover {
     background-color: #ffc108e0;
     border: 0.5px solid #b42529eb;
     color: #b42529eb;
-    font-size: larger;
-
 }
 
 .quiz.private {

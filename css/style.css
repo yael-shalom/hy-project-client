@@ -10,8 +10,7 @@ body {
 }
  h2{
     text-align: center;
-    color: #b42529eb;
-    font-family: cursive;
+    color: var(--button-color--);
  }
 button {
     position: relative;

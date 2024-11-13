@@ -2,7 +2,7 @@
     box-sizing: border-box;
 }
 
-header{
+header {
     background-color: #abced2;
     top: 0%;
 }
@@ -38,7 +38,7 @@ nav {
 }
 
 nav.flex-row.flex-between {
-    
+
     justify-content: space-around;
 }
 
@@ -81,14 +81,14 @@ a {
     text-decoration: none;
     color: var(--main-color);
     color: #b42529eb;
-    font-size: 150%;
+    font-size: 135%;
 
 }
 
 nav a:hover {
     background-color: var(--main-color);
-    color: #c3b6ae
-
+    font-weight: bold;
+    font-size: 127%;
 }
 
 button {
@@ -99,7 +99,7 @@ button {
     align-items: center;
 }
 
-.flex-row.flex-between.align-center{
+.flex-row.flex-between.align-center {
     padding: 10px;
 }
 
@@ -108,6 +108,12 @@ button {
     height: 60px;
     width: 60px;
     cursor: pointer;
+}
+
+img.profile {
+    left: 6px;
+    position: relative;
+    border: 3px solid black;
 }
 
 /* //////////////////////////////////////////////////////////////////////// */
