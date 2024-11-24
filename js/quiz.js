@@ -162,31 +162,6 @@ async function deleteQuiz() {
     }
 }
 
-// async function updateUserAfterQuiz(score, userId) {
-//     const res = await fetch(`${baseURL}/users/${userId}`);
-//     const currentUser = await res.json();
-
-//     const user = {
-//         _id: userId
-//     };
-
-//     try {        
-//         // שליחת הנתונים לשרת
-//         const res = await myFetch(`${baseURL}/users/${userId}`, 'PATCH',
-//             {
-//                 headers: { 'Content-Type': 'application/json', },
-//                 body: JSON.stringify(user)
-//             });
-//         const data = res.data;
-
-//         console.log('user updated:', data);
-//         alert('user updated successfully!');
-//     } catch (error) {
-//         console.error('Error:', error);
-//         alert('Failed to update user.');
-//     }
-// }
-
 //#region add profile
 const profileWindow = document.getElementById('profileWindow');
 

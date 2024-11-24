@@ -15,7 +15,7 @@ const getMyQuizzes = async () => {
         for (const quiz of quizzes) {
             let div = document.createElement("div");
             div.classList.add("quiz");
-            if(quiz.isPrivate)
+            if (quiz.isPrivate)
                 div.classList.add("private");
             div.dataset.id = quiz._id;
             div.textContent = quiz.name;
@@ -87,7 +87,7 @@ const getQuizzesByCategory = async (event) => {
 
         quizzes = mergeArrays(quizzes, quizzesOfCategory);
         console.log(quizzes);
-        
+
 
         const quizzesCon = document.querySelector("#quizzes");
         quizzesCon.innerHTML = "";
@@ -152,14 +152,22 @@ function cancel() {
 }
 //#endregion
 
-onload = ()=>{
-    if(isMy === "true") {
-        getMyQuizzes();
+onload = () => {
+    if (isMy === "true") {
+        if (JSON.parse(localStorage.getItem("isLogin")))
+            getMyQuizzes();
+        else{
+            const showComment = document.querySelector('.show-comment');
+            showComment.innerHTML = "אינך רשום במערכת"
+            showComment.style.fontFamily = "rubik";
+            showComment.style.fontSize = "20px";
+            showComment.style.margin = "auto";
+        }
     }
-    else if(isMy === "false") {
+    else if (isMy === "false") {
         getAllQuizzes()
     }
-    if(quizSearch){
+    if (quizSearch) {
         filterByQuizName();
     }
     getAllCategories();
@@ -182,7 +190,7 @@ onload = ()=>{
     }
     else {
         const btn = document.querySelector('#enter');
-        btn.onclick = ()=>{window.open('../pages/login.html', '_self')};
+        btn.onclick = () => { window.open('../pages/login.html', '_self') };
     }
 }
 
@@ -202,14 +210,14 @@ function mergeArrays(arr1, arr2) {
 
 function createQuizzesHtml() {
     const quizzesCon = document.querySelector("#quizzes");
-        for (const quiz of quizzes) {
-            let div = document.createElement("div");
-            div.classList.add("quiz");
-            div.dataset.id = quiz._id;
-            div.textContent = quiz.name;
-            div.addEventListener("click", (event) => {
-                window.open(`./quiz.html?id=${quiz._id}`, '_self');
-            });
-            quizzesCon.append(div);
-        }
+    for (const quiz of quizzes) {
+        let div = document.createElement("div");
+        div.classList.add("quiz");
+        div.dataset.id = quiz._id;
+        div.textContent = quiz.name;
+        div.addEventListener("click", (event) => {
+            window.open(`./quiz.html?id=${quiz._id}`, '_self');
+        });
+        quizzesCon.append(div);
+    }
 }
